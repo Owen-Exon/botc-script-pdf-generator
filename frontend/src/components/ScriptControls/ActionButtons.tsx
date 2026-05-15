@@ -35,55 +35,9 @@ export function ActionButtons({
         <button onClick={onGeneratePDF} className="print-button primary">
           Generate PDF
         </button>
-        <button onClick={onPrint} className="print-button">
-          Browser Print
-        </button>
-        <button onClick={onGenerateImages} className="print-button">
-          Download as Image
-        </button>
-        <button
-          onClick={onSort}
-          className={`sort-button${!isScriptSorted ? " glow" : ""}`}
-        >
-          Sort Script
-        </button>
       </div>
-
-      <p className="browser-print-note">
-        Browser Print only works reliably in Chromium-based browsers
-        <br />
-        (Chrome, Edge, Brave, etc.)
-      </p>
-      <p className="browser-print-note">
-        Produced PDFs don't work with some readers (eg. MacOS Preview). If you
-        have issues, try opening the PDF in a different reader or browser.
-      </p>
-
-      {!isScriptSorted && (
-        <div className="warning-message">
-          <strong>Script Not Sorted:</strong> This script doesn't follow the
-          official sorting order. Click "Sort Script" to fix this.
-        </div>
-      )}
 
       {error && <div className="error-message">{error}</div>}
-
-      <div className="save-share-buttons">
-        {savedScriptsCount > 0 && (
-          <button onClick={onShowLibrary} className="library-button">
-            <LibraryIcon />
-            Library ({savedScriptsCount})
-          </button>
-        )}
-        <button onClick={onSaveToLibrary} className="save-button">
-          <SaveIcon />
-          Save
-        </button>
-        <button onClick={onShare} className="share-button" disabled={isSharing}>
-          <ShareIcon />
-          {isSharing ? "..." : "Share"}
-        </button>
-      </div>
 
       {shareUrl && (
         <div className="success-message">

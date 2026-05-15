@@ -73,10 +73,6 @@ export function ScriptControls({
 }: ScriptControlsProps) {
   return (
     <>
-      <h1 className="app-title">
-        Blood on the Clocktower Fancy Script Generator
-      </h1>
-
       <div className="control-panel">
         <UploadSection
           hasScript={hasScript}
@@ -87,10 +83,6 @@ export function ScriptControls({
 
         {hasScript && (
           <>
-            <p style={{ textAlign: "center", margin: 0 }}>
-              If you have any feedback, please let me know{" "}
-              <a href="https://forms.gle/z1yeAW7x91X4Uc4H8">here</a>.
-            </p>
             <ActionButtons
               isScriptSorted={isScriptSorted}
               error={error}
@@ -119,7 +111,7 @@ export function ScriptControls({
               />
             </CollapsibleSection>
 
-            <CollapsibleSection title="Font" defaultOpen={false}>
+            <CollapsibleSection title="Font">
               <FontOptions
                 titleStyle={options.titleStyle}
                 onTitleStyleChange={(key, value) =>
@@ -131,7 +123,7 @@ export function ScriptControls({
               />
             </CollapsibleSection>
 
-            <CollapsibleSection title="Character Sheet" defaultOpen={false}>
+            <CollapsibleSection title="Character Sheet">
               <CharacterSheetOptions
                 options={options}
                 onOptionChange={onOptionChange}
@@ -141,7 +133,7 @@ export function ScriptControls({
             {options.overleaf !== "none" && (
               <CollapsibleSection
                 title="Character Sheet Back"
-                defaultOpen={false}
+               
               >
                 <CharacterSheetBackOptions
                   options={options}
@@ -150,16 +142,8 @@ export function ScriptControls({
               </CollapsibleSection>
             )}
 
-            <CollapsibleSection title="Print Options" defaultOpen={false}>
+            <CollapsibleSection title="Print Options">
               <PrintOptions options={options} onOptionChange={onOptionChange} />
-            </CollapsibleSection>
-
-            <CollapsibleSection title="Edit Script JSON" defaultOpen={false}>
-              <ScriptEditor
-                scriptText={scriptText}
-                onScriptChange={onScriptChange}
-                onSave={onSave}
-              />
             </CollapsibleSection>
           </>
         )}

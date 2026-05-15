@@ -27,7 +27,7 @@ export function PdfModal({
             <p className="modal-text">This may take a minute...</p>
           </>
         )}
-
+        {onDownload()}
         {!isLoading && pdfUrl && (
           <>
             <svg
@@ -45,22 +45,7 @@ export function PdfModal({
             </svg>
             <h2 className="modal-title">Script Ready!</h2>
             <p className="modal-text">Script successfully PDFerised</p>
-
-            <div className="pdf-preview-container">
-              <iframe
-                src={pdfUrl}
-                className="pdf-preview"
-                title="PDF Preview"
-              />
-            </div>
-
             <div className="modal-buttons">
-              <button
-                onClick={onDownload}
-                className="modal-button modal-button-primary"
-              >
-                Download PDF
-              </button>
               <button
                 onClick={onClose}
                 className="modal-button modal-button-secondary"
