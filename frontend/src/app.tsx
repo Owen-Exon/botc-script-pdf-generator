@@ -162,7 +162,7 @@ function EditMode() {
 
   // Persist options to localStorage
   useEffect(() => {
-    localStorage.setItem("options", JSON.stringify(options));
+    // localStorage.setItem("options", JSON.stringify(options));
   }, [options]);
 
   // Auto-save to active library entry when script or options change
@@ -175,11 +175,11 @@ function EditMode() {
   // Auto-adjust icon scale when appearance changes
   useEffect(() => {
     if (options.appearance === "compact") {
-      setOptions((prev) => ({ ...prev, iconScale: 1.6 }));
+      setOptions((prev) => ({ ...prev, iconScale: 1.7 }));
     } else if (options.appearance === "super-compact") {
-      setOptions((prev) => ({ ...prev, iconScale: 1.5 }));
+      setOptions((prev) => ({ ...prev, iconScale: 1.6 }));
     } else if (options.appearance === "mega-compact") {
-      setOptions((prev) => ({ ...prev, iconScale: 1.4 }));
+      setOptions((prev) => ({ ...prev, iconScale: 1.6 }));
     } else {
       setOptions((prev) => ({ ...prev, iconScale: 1.7 }));
     }
@@ -347,15 +347,6 @@ function EditMode() {
           </div>
         )}
         <div className={`controls ${controlsClassName}`}>
-          {showLibrary ? (
-            <SavedScriptsPanel
-              savedScripts={savedScripts}
-              activeScriptId={activeScriptId}
-              onLoad={handleLoadSavedScript}
-              onDelete={deleteScript}
-              onClose={() => setShowLibrary(false)}
-            />
-          ) : (
             <ScriptControls
               hasScript={!!script}
               options={options}
@@ -385,7 +376,6 @@ function EditMode() {
               onShowLibrary={() => setShowLibrary(true)}
               onSaveToLibrary={handleSaveToLibrary}
             />
-          )}
         </div>
 
         {script && options.teensy && (
@@ -436,13 +426,6 @@ function EditMode() {
           </div>
         )}
       </div>
-
-      {!script && (
-        <div className="changelog-container">
-          <Changelog />
-        </div>
-      )}
-
       <PdfModal
         isOpen={showPdfModal}
         isLoading={pdfLoading}

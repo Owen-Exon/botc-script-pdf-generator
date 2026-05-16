@@ -2,6 +2,7 @@ import { Select } from "../ui";
 import { TitleStyle } from "../../types/options";
 
 const TITLE_FONT_OPTIONS = [
+  { value: "LHF Unlovable", label: "LHF Unlovable" },
   { value: "Alice in Wonderland", label: "Alice in Wonderland" },
   { value: "Anglican", label: "Anglican" },
   { value: "Canterbury Regular", label: "Canterbury" },
@@ -29,7 +30,7 @@ export function FontOptions({
         options={TITLE_FONT_OPTIONS}
         onChange={(value) => onTitleStyleChange("font", value)}
       />
-      <div>
+      {/* <div>
         <div className="form-control">
           <label className="form-control-label">
             <span className="form-control-text">Custom Font URL</span>
@@ -72,7 +73,7 @@ export function FontOptions({
         <p className="print-options-hint">
           Overrides the font selection above.
         </p>
-      </div>
+      </div> */}
       <div className="form-control">
         <label className="form-control-label">
           <span className="form-control-text">Letter Spacing (mm)</span>

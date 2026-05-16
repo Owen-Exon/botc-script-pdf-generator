@@ -84,6 +84,10 @@ function getFontFaces(assetBase: string): string {
       src: url('${assetBase}/fonts/UtmAgin.ttf') format('truetype');
     }
     @font-face {
+      font-family: 'LHF Unlovable';
+      src: url('${assetBase}/fonts/LHF_Unlovable.ttf') format('truetype');
+    }
+    @font-face {
       font-family: 'Waters Gothic';
       src: url('${assetBase}/fonts/WatersGothic.ttf') format('truetype');
     }

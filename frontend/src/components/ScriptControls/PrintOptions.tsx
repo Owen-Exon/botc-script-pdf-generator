@@ -35,12 +35,12 @@ export function PrintOptions({ options, onOptionChange }: PrintOptionsProps) {
 
   return (
     <>
-      <NumberInput
+      {/* <NumberInput
         label="Number of Character Sheets:"
         value={options.numberOfCharacterSheets}
         min={1}
         onChange={(value) => onOptionChange("numberOfCharacterSheets", value)}
-      />
+      /> */}
 
       <Select
         label="Paper Type:"

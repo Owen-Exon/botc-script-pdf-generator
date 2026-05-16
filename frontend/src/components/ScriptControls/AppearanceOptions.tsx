@@ -1,7 +1,7 @@
 import { ScriptOptions } from "botc-character-sheet";
-import { Toggle } from "../ui";
 import { ColorPicker } from "./ColorPicker";
-import { DEFAULT_OPTIONS } from "../../types/options";
+import { Toggle, Select, Slider } from "../ui";
+import { AppearanceLevel } from "../../types/options";
 
 interface AppearanceOptionsProps {
   options: ScriptOptions;
@@ -34,7 +34,7 @@ export function AppearanceOptions({
         onAddColor={onAddColor}
         onRemoveColor={onRemoveColor}
       />
-      <div className="form-control">
+      {/* <div className="form-control">
         <label className="form-control-label">
           <span className="form-control-text">Logo URL</span>
           <input
@@ -92,17 +92,70 @@ export function AppearanceOptions({
             placeholder for the character ID.
           </p>
         </div>
-      )}
-      <Toggle
+      )} */}
+      {/* <Toggle
         label="Include Night Sheet"
         checked={options.showNightSheet}
         onChange={(value) => onOptionChange("showNightSheet", value)}
-      />
+      /> */}
       <Toggle
         label="Teensy Mode"
         checked={options.teensy}
         onChange={(value) => onOptionChange("teensy", value)}
       />
+
+      <div className="scaleOptionContainer">
+        <Select
+          label="Sizing:"
+          value={options.appearance}
+          options={[
+            { value: "normal", label: "Normal" },
+            { value: "compact", label: "Small" },
+            { value: "super-compact", label: "Smaller" },
+            { value: "mega-compact", label: "Smallest" },
+          ]}
+          onChange={(value) =>
+            onOptionChange("appearance", value as AppearanceLevel)
+          }
+        />
+        <button className="calcScale-button" onClick={() => {onOptionChange("appearance", "mega-compact" as AppearanceLevel); setTimeout(() => onOptionChange("appearance", "normal" as AppearanceLevel),100);}}>Maximise</button>
+      </div>
+
+      <Slider
+        label="Icon Scale"
+        value={options.iconScale}
+        min={0.5}
+        max={3}
+        step={0.1}
+        displayValue={options.iconScale.toFixed(1)}
+        onChange={(value) => onOptionChange("iconScale", value)}
+      />
+
+      <Toggle
+        label="Show Jinxes"
+        checked={options.showJinxes}
+        onChange={(value) => onOptionChange("showJinxes", value)}
+      />
+
+      <Toggle
+        label="Include Night Order"
+        checked={options.displayNightOrder}
+        onChange={(value) => onOptionChange("displayNightOrder", value)}
+      />
+      
+      <Toggle
+        label="Include Player Counts"
+        checked={options.displayPlayerCounts}
+        onChange={(value) => onOptionChange("displayPlayerCounts", value)}
+      />
+
+      {options.overleaf === "backingSheet" && (
+        <Toggle
+          label="Shrink Minor Words"
+          checked={options.formatMinorWords}
+          onChange={(value) => onOptionChange("formatMinorWords", value)}
+        />
+      )}
     </>
   );
 }

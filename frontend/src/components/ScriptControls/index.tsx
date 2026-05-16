@@ -3,11 +3,8 @@ import { CollapsibleSection } from "../ui";
 import { UploadSection } from "./UploadSection";
 import { AppearanceOptions } from "./AppearanceOptions";
 import { FontOptions } from "./FontOptions";
-import { CharacterSheetOptions } from "./CharacterSheetOptions";
-import { CharacterSheetBackOptions } from "./CharacterSheetBackOptions";
 import { PrintOptions } from "./PrintOptions";
 import { ActionButtons } from "./ActionButtons";
-import { ScriptEditor } from "../ScriptEditor";
 
 interface ScriptControlsProps {
   hasScript: boolean;
@@ -110,7 +107,7 @@ export function ScriptControls({
                 onLogoChange={onLogoChange}
               />
             </CollapsibleSection>
-
+            
             <CollapsibleSection title="Font">
               <FontOptions
                 titleStyle={options.titleStyle}
@@ -122,25 +119,6 @@ export function ScriptControls({
                 }
               />
             </CollapsibleSection>
-
-            <CollapsibleSection title="Character Sheet">
-              <CharacterSheetOptions
-                options={options}
-                onOptionChange={onOptionChange}
-              />
-            </CollapsibleSection>
-
-            {options.overleaf !== "none" && (
-              <CollapsibleSection
-                title="Character Sheet Back"
-               
-              >
-                <CharacterSheetBackOptions
-                  options={options}
-                  onOptionChange={onOptionChange}
-                />
-              </CollapsibleSection>
-            )}
 
             <CollapsibleSection title="Print Options">
               <PrintOptions options={options} onOptionChange={onOptionChange} />

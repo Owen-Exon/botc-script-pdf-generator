@@ -75,18 +75,6 @@ export function useScriptLoading(
             err instanceof Error ? err.message : "Failed to load shared script",
           );
         });
-    } else {
-      // Load from localStorage
-      const saved = localStorage.getItem("script");
-      if (saved) {
-        try {
-          const json = JSON.parse(saved);
-          const parsed = loadScript(json);
-          onLoad?.(json, parsed);
-        } catch {
-          /* ignore corrupt data */
-        }
-      }
     }
   }, []);
 

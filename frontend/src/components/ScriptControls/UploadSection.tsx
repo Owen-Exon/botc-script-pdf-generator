@@ -30,17 +30,6 @@ export function UploadSection({
           Paste directly with {isMac ? "⌘" : "ctrl"}+V
         </div>
       </div>
-
-      {!hasScript && (
-        <div className="example-section">
-          <button onClick={onLoadExample} className="example-button">
-            Load Example Script
-          </button>
-          <button onClick={onLoadExampleTeensyville} className="example-button">
-            Load Example Teensyville
-          </button>
-        </div>
-      )}
     </>
   );
 }

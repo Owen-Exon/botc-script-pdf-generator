@@ -29,7 +29,7 @@ export function FancyDoc({
     : rawOptions;
 
   const groupedCharacters = groupCharactersByTeam(script.characters);
-  const jinxes = options.showJinxes
+  const jinxes = true
     ? findJinxes(script.characters, options.useOldJinxes)
     : [];
   const resolvedJinxes = jinxes.map(
@@ -61,6 +61,7 @@ export function FancyDoc({
               author={options.showAuthor ? script.metadata?.author : undefined}
               characters={groupedCharacters}
               jinxes={jinxes}
+              showJinxes={options.showJinxes}
               fabledOrLoric={fabledAndLoric}
               bootleggerRules={script.metadata?.bootlegger}
               options={options}
@@ -105,28 +106,28 @@ export function FancyDoc({
             options={options}
           />
           <div style="break-after:page;"></div>
-          <InfoSheet
-            title={script.metadata?.name || "Custom Script"}
-            firstNightOrder={nightOrders.first}
-            otherNightOrder={nightOrders.other}
-            bootleggerRules={script.metadata?.bootlegger}
-            jinxes={resolvedJinxes}
-            fabledOrLoric={fabledAndLoric}
-            travellers={groupedCharacters.traveller}
-            options={options}
-          />
-          <div style="break-after:page;"></div>
-          <SheetBack
-            title={script.metadata?.name || "Custom Script"}
-            nightOrders={nightOrders}
-            options={{
-              ...options,
-              displayNightOrder:false,
-              displayPlayerCounts:false
-            }}
-          />
         </>
       )}
+      <InfoSheet
+        title={script.metadata?.name || "Custom Script"}
+        firstNightOrder={nightOrders.first}
+        otherNightOrder={nightOrders.other}
+        bootleggerRules={script.metadata?.bootlegger}
+        jinxes={resolvedJinxes}
+        fabledOrLoric={fabledAndLoric}
+        travellers={groupedCharacters.traveller}
+        options={options}
+      />
+      <div style="break-after:page;"></div>
+      <SheetBack
+        title={script.metadata?.name || "Custom Script"}
+        nightOrders={nightOrders}
+        options={{
+          ...options,
+          displayNightOrder:false,
+          displayPlayerCounts:false
+        }}
+      />
     </div>
   );
 }

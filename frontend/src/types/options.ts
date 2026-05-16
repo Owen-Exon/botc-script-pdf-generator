@@ -5,7 +5,7 @@ export type AppearanceLevel =
   | "compact"
   | "super-compact"
   | "mega-compact";
-export type OverleafType = "none" | "backingSheet" | "infoSheet";
+export type OverleafType = "backingSheet" | "infoSheet";
 export type PaperType = "A4" | "Letter";
 
 // Re-export types from botc-character-sheet for convenience
@@ -30,6 +30,14 @@ export const TITLE_FONT_DEFAULTS: Record<
   string,
   Omit<TitleStyle, "font" | "customFontUrl">
 > = {
+  "LHF Unlovable": {
+    letterSpacing: 0,
+    wordSpacing: 0,
+    lineHeight: 11,
+    backLineHeight: 23,
+    marginTop: -1.5,
+    marginBottom: -1.5,
+  },
   "Alice in Wonderland": {
     letterSpacing: -0.6,
     wordSpacing: 0,
@@ -94,8 +102,8 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
   inlineJinxIcons: "primary",
   iconUrlTemplate: "/images/icons/{id}.webp",
   titleStyle: {
-    font: "Utm Agin",
-    letterSpacing: -0.6,
+    font: "LHF Unlovable",
+    letterSpacing: 0,
     wordSpacing: 0,
     lineHeight: 11,
     backLineHeight: 23,

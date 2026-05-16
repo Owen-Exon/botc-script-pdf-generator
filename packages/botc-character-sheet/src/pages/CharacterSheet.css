@@ -87,6 +87,7 @@
   justify-content: center;
   width: fit-content;
   align-self: center;
+  gap: 3mm;
 }
 
 .sheet-header span {

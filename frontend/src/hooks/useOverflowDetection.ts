@@ -89,7 +89,7 @@ export function useOverflowDetection({
         // No overflow, mark this appearance as checked
         lastCheckedAppearanceRef.current = currentAppearance;
       }
-    }, 300); // 300ms debounce to allow rendering to complete
+    }, 100); // 100ms debounce to allow rendering to complete
 
     return () => clearTimeout(timeoutId);
   }, [options.appearance, script, setOptions, options.dimensions]);

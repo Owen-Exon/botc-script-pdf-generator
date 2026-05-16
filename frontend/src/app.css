@@ -38,6 +38,11 @@ a:visited {
 }
 
 @font-face {
+  font-family: LHF Unlovable;
+  src: url("/fonts/LHF_Unlovable.ttf") format("truetype");
+}
+
+@font-face {
   font-family: Waters Gothic;
   src: url("/fonts/WatersGothic.ttf") format("truetype");
 }
@@ -88,7 +93,7 @@ a:visited {
 
 .controls {
   background: var(--card-bg);
-  /* border-radius: 12px; */
+  border-radius: 12px;
   padding: 30px;
   box-shadow: 0 10px 30px var(--shadow);
   display: flex;
@@ -700,7 +705,7 @@ select.form-control-input:focus {
 
 .preview-section {
   background: var(--card-bg);
-  /* border-radius: 12px; */
+  border-radius: 12px;
   padding: 30px;
   box-shadow: 0 10px 30px var(--shadow);
 }
@@ -984,6 +989,28 @@ select.form-control-input:focus {
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 2px 6px var(--shadow-light);
+}
+
+.calcScale-button {
+  cursor: pointer;
+  padding: 2px 4px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color 0.2s;
+}
+
+.calcScale-button:hover {
+  border-color: var(--button-bg);
+}
+
+.scaleOptionContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 
 .modal-button-primary {
