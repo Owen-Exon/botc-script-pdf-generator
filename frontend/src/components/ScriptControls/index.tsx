@@ -5,6 +5,7 @@ import { AppearanceOptions } from "./AppearanceOptions";
 import { FontOptions } from "./FontOptions";
 import { PrintOptions } from "./PrintOptions";
 import { ActionButtons } from "./ActionButtons";
+import { ScriptEditor } from "../ScriptEditor";
 
 interface ScriptControlsProps {
   hasScript: boolean;
@@ -122,6 +123,14 @@ export function ScriptControls({
 
             <CollapsibleSection title="Print Options">
               <PrintOptions options={options} onOptionChange={onOptionChange} />
+            </CollapsibleSection>
+
+            <CollapsibleSection title="Edit Script JSON" defaultOpen={false}>
+              <ScriptEditor
+                scriptText={scriptText}
+                onScriptChange={onScriptChange}
+                onSave={onSave}
+              />
             </CollapsibleSection>
           </>
         )}

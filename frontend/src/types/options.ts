@@ -32,7 +32,7 @@ export const TITLE_FONT_DEFAULTS: Record<
 > = {
   "LHF Unlovable": {
     letterSpacing: 0,
-    wordSpacing: 0,
+    wordSpacing: -4,
     lineHeight: 11,
     backLineHeight: 23,
     marginTop: -1.5,
@@ -104,7 +104,7 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
   titleStyle: {
     font: "LHF Unlovable",
     letterSpacing: 0,
-    wordSpacing: 0,
+    wordSpacing: -4,
     lineHeight: 11,
     backLineHeight: 23,
     marginTop: -2,
