@@ -62,6 +62,7 @@ export function FancyDoc({
               characters={groupedCharacters}
               jinxes={jinxes}
               showJinxes={options.showJinxes}
+              showfabledAndLoric={options.showfabledAndLoric}
               fabledOrLoric={fabledAndLoric}
               bootleggerRules={script.metadata?.bootlegger}
               options={options}

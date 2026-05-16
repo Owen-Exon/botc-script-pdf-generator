@@ -18,6 +18,7 @@ interface CharacterSheetProps {
   characters: GroupedCharacters;
   jinxes: Jinx[];
   showJinxes?:boolean;
+  showfabledAndLoric?:boolean
   fabledOrLoric?: FabledOrLoric[];
   bootleggerRules?: string[];
   options: ScriptOptions;
@@ -29,6 +30,7 @@ export function CharacterSheet({
   characters,
   jinxes = [],
   showJinxes = true,
+  showfabledAndLoric = true,
   fabledOrLoric = [],
   bootleggerRules = [],
   options,
@@ -141,12 +143,12 @@ export function CharacterSheet({
                 )}
               </>
             ))}
-            {(jinxes.length > 0 || fabledOrLoric.length > 0) && (showJinxes) && (
+            {(jinxes.length > 0 || fabledOrLoric.length > 0) && (
               <>
                 <img src="/images/divider.png" className="section-divider" />
                 <JinxesAndSpecial
-                  fabledAndLoric={fabledOrLoric}
-                  jinxes={jinxes}
+                  fabledAndLoric={showfabledAndLoric ? fabledOrLoric : []}
+                  jinxes={showJinxes ? jinxes : []}
                   allCharacters={[
                     ...characters.townsfolk,
                     ...characters.outsider,

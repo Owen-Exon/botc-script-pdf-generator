@@ -138,6 +138,12 @@ export function AppearanceOptions({
       />
 
       <Toggle
+        label="Show Fabled / Loric"
+        checked={options.showfabledAndLoric}
+        onChange={(value) => onOptionChange("showfabledAndLoric", value)}
+      />
+
+      <Toggle
         label="Include Night Order"
         checked={options.displayNightOrder}
         onChange={(value) => onOptionChange("displayNightOrder", value)}
