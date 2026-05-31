@@ -13,18 +13,13 @@ export function hasUrlParam(key: string): boolean {
 
 export function getInitialOptionsFromUrl(): ScriptOptions {
   const params = new URLSearchParams(window.location.search);
-  const saved = localStorage.getItem("options");
-  const savedOptions = saved ? JSON.parse(saved) : null;
   const options: ScriptOptions = {
     ...DEFAULT_OPTIONS,
-    ...savedOptions,
     dimensions: {
       ...DEFAULT_OPTIONS.dimensions,
-      ...savedOptions?.dimensions,
     },
     titleStyle: {
       ...DEFAULT_OPTIONS.titleStyle,
-      ...savedOptions?.titleStyle,
     },
   };
 

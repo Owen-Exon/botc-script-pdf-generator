@@ -29,7 +29,8 @@ export const TeensyDoc = ({
       }
     : rawOptions;
 
-  const numberOfSheets =
+  options.numberOfCharacterSheets = 2
+  const numberOfSheets = 
     options.numberOfCharacterSheets + (options.numberOfCharacterSheets % 2); // Round up to even number
 
   const groupedCharacters = groupCharactersByTeam(script.characters);
@@ -180,16 +181,39 @@ export const TeensyDoc = ({
       {options.showNightSheet &&
         (!(options.numberOfCharacterSheets % 2) ||
           options.overleaf === "none") && (
-          <div
-            className={`teensy-night-sheet ${options.overleaf === "none" ? "teensy-sheet-pair" : ""}`}
-          >
-            <NightSheet
-              title={script.metadata?.name || "Custom Script"}
-              firstNightOrder={nightOrders.first}
-              otherNightOrder={nightOrders.other}
-              options={options}
-            />
+          <>
+            <div className={`teensy-night-sheet teensy-sheet-pair`}>
+              <NightSheet
+                title={script.metadata?.name || "Custom Script"}
+                firstNightOrder={nightOrders.first}
+                otherNightOrder={undefined}
+                options={options}
+              />
+              <InfoSheet
+                title={script.metadata?.name || "Custom Script"}
+                firstNightOrder={nightOrders.first}
+                otherNightOrder={nightOrders.other}
+                bootleggerRules={script.metadata?.bootlegger}
+                jinxes={resolvedJinxes}
+                fabledOrLoric={fabledAndLoric}
+                travellers={groupedCharacters.traveller}
+                options={options}
+              />
           </div>
+          <div className={`teensy-night-sheet teensy-sheet-pair`}>
+              <SheetBack
+                title={script.metadata?.name || "Custom Script"}
+                nightOrders={nightOrders}
+                options={options}
+              />
+              <NightSheet
+                title={script.metadata?.name || "Custom Script"}
+                firstNightOrder={undefined}
+                otherNightOrder={nightOrders.other}
+                options={options}
+              />
+          </div>
+          </>
         )}
     </div>
   );

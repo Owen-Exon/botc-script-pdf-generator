@@ -143,17 +143,17 @@ export function AppearanceOptions({
         onChange={(value) => onOptionChange("showfabledAndLoric", value)}
       />
 
-      <Toggle
+      {/* <Toggle
         label="Include Night Order"
         checked={options.displayNightOrder}
         onChange={(value) => onOptionChange("displayNightOrder", value)}
-      />
+      /> */}
       
-      <Toggle
+      {/* <Toggle
         label="Include Player Counts"
         checked={options.displayPlayerCounts}
         onChange={(value) => onOptionChange("displayPlayerCounts", value)}
-      />
+      /> */}
 
       {options.overleaf === "backingSheet" && (
         <Toggle

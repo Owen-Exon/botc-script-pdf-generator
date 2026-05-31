@@ -81,7 +81,7 @@ export const TITLE_FONT_DEFAULTS: Record<
 };
 
 export const DEFAULT_OPTIONS: ScriptOptions = {
-  color: randomColor(),
+  color: `#920c0e`,
   logo: "",
   showLogo: true,
   showTitle: true,
