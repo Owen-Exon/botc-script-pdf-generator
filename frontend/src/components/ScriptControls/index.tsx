@@ -108,7 +108,7 @@ export function ScriptControls({
                 onLogoChange={onLogoChange}
               />
             </CollapsibleSection>
-            
+
             <CollapsibleSection title="Font">
               <FontOptions
                 titleStyle={options.titleStyle}

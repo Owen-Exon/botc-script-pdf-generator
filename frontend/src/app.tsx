@@ -18,9 +18,7 @@ import { useSavedScripts } from "./hooks/useSavedScripts";
 import { ScriptControls } from "./components/ScriptControls";
 import { PdfModal } from "./components/PdfModal";
 import { ImageModal } from "./components/ImageModal";
-import { Changelog } from "./components/Changelog";
 import { MobileControlsToggle } from "./components/MobileControlsToggle";
-import { SavedScriptsPanel } from "./components/SavedScriptsPanel";
 import { ViewMode } from "./components/ViewMode";
 import {
   randomColor,
@@ -48,14 +46,7 @@ export function App() {
 }
 
 function EditMode() {
-  const {
-    savedScripts,
-    createEntry,
-    updateActiveScript,
-    deleteScript,
-    loadSavedScript,
-    activeScriptId,
-  } = useSavedScripts();
+  const { savedScripts, createEntry, updateActiveScript } = useSavedScripts();
 
   const [options, setOptions] = useState<ScriptOptions>(
     getInitialOptionsFromUrl,
@@ -102,7 +93,7 @@ function EditMode() {
   const { isSharing, shareUrl, shareError, handleShare, clearShareState } =
     useShare();
 
-  const [showLibrary, setShowLibrary] = useState(false);
+  const setShowLibrary = useState(false)[1];
 
   const {
     isOpen: mobileControlsOpen,
@@ -316,13 +307,6 @@ function EditMode() {
     handleShare(rawScript, options);
   };
 
-  const handleLoadSavedScript = (saved: (typeof savedScripts)[number]) => {
-    loadScript(saved.script);
-    setOptions(saved.options);
-    loadSavedScript(saved.id);
-    setShowLibrary(false);
-  };
-
   const handleDownloadPDF = () => {
     downloadPDF(script?.metadata?.name);
   };
@@ -347,35 +331,35 @@ function EditMode() {
           </div>
         )}
         <div className={`controls ${controlsClassName}`}>
-            <ScriptControls
-              hasScript={!!script}
-              options={options}
-              isScriptSorted={isScriptSorted}
-              error={error}
-              scriptText={scriptText}
-              onScriptChange={handleScriptChange}
-              onSave={handleSaveScript}
-              onFileUpload={handleFileUpload}
-              onLoadExample={handleLoadExample}
-              onLoadExampleTeensyville={handleLoadExampleTeensyville}
-              onColorChange={handleColorChange}
-              onColorArrayChange={handleColorArrayChange}
-              onAddColor={handleAddColor}
-              onRemoveColor={handleRemoveColor}
-              onLogoChange={handleLogoChange}
-              onOptionChange={updateOption}
-              onSort={handleSort}
-              onGeneratePDF={handleGeneratePDF}
-              onGenerateImages={handleGenerateImages}
-              onPrint={handlePrint}
-              onShare={handleShareScript}
-              isSharing={isSharing}
-              shareUrl={shareUrl}
-              shareError={shareError}
-              savedScriptsCount={savedScripts.length}
-              onShowLibrary={() => setShowLibrary(true)}
-              onSaveToLibrary={handleSaveToLibrary}
-            />
+          <ScriptControls
+            hasScript={!!script}
+            options={options}
+            isScriptSorted={isScriptSorted}
+            error={error}
+            scriptText={scriptText}
+            onScriptChange={handleScriptChange}
+            onSave={handleSaveScript}
+            onFileUpload={handleFileUpload}
+            onLoadExample={handleLoadExample}
+            onLoadExampleTeensyville={handleLoadExampleTeensyville}
+            onColorChange={handleColorChange}
+            onColorArrayChange={handleColorArrayChange}
+            onAddColor={handleAddColor}
+            onRemoveColor={handleRemoveColor}
+            onLogoChange={handleLogoChange}
+            onOptionChange={updateOption}
+            onSort={handleSort}
+            onGeneratePDF={handleGeneratePDF}
+            onGenerateImages={handleGenerateImages}
+            onPrint={handlePrint}
+            onShare={handleShareScript}
+            isSharing={isSharing}
+            shareUrl={shareUrl}
+            shareError={shareError}
+            savedScriptsCount={savedScripts.length}
+            onShowLibrary={() => setShowLibrary(true)}
+            onSaveToLibrary={handleSaveToLibrary}
+          />
         </div>
 
         {script && options.teensy && (

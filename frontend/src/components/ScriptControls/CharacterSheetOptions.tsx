@@ -1,6 +1,4 @@
 import { ScriptOptions } from "botc-character-sheet";
-import { Toggle, Select, Slider } from "../ui";
-import { AppearanceLevel, OverleafType } from "../../types/options";
 
 export type InlineJinxIconsMode = "none" | "primary" | "both";
 
@@ -12,10 +10,7 @@ interface CharacterSheetOptionsProps {
   ) => void;
 }
 
-export function CharacterSheetOptions({
-  options,
-  onOptionChange,
-}: CharacterSheetOptionsProps) {
+export function CharacterSheetOptions({ options }: CharacterSheetOptionsProps) {
   return (
     <>
       <div>{options}</div>

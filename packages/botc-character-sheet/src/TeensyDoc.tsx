@@ -29,8 +29,8 @@ export const TeensyDoc = ({
       }
     : rawOptions;
 
-  options.numberOfCharacterSheets = 2
-  const numberOfSheets = 
+  options.numberOfCharacterSheets = 2;
+  const numberOfSheets =
     options.numberOfCharacterSheets + (options.numberOfCharacterSheets % 2); // Round up to even number
 
   const groupedCharacters = groupCharactersByTeam(script.characters);
@@ -199,8 +199,8 @@ export const TeensyDoc = ({
                 travellers={groupedCharacters.traveller}
                 options={options}
               />
-          </div>
-          <div className={`teensy-night-sheet teensy-sheet-pair`}>
+            </div>
+            <div className={`teensy-night-sheet teensy-sheet-pair`}>
               <SheetBack
                 title={script.metadata?.name || "Custom Script"}
                 nightOrders={nightOrders}
@@ -212,7 +212,7 @@ export const TeensyDoc = ({
                 otherNightOrder={nightOrders.other}
                 options={options}
               />
-          </div>
+            </div>
           </>
         )}
     </div>

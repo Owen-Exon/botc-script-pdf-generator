@@ -23,7 +23,6 @@ export function AppearanceOptions({
   onColorArrayChange,
   onAddColor,
   onRemoveColor,
-  onLogoChange,
 }: AppearanceOptionsProps) {
   return (
     <>
@@ -118,7 +117,18 @@ export function AppearanceOptions({
             onOptionChange("appearance", value as AppearanceLevel)
           }
         />
-        <button className="calcScale-button" onClick={() => {onOptionChange("appearance", "mega-compact" as AppearanceLevel); setTimeout(() => onOptionChange("appearance", "normal" as AppearanceLevel),100);}}>Maximise</button>
+        <button
+          className="calcScale-button"
+          onClick={() => {
+            onOptionChange("appearance", "mega-compact" as AppearanceLevel);
+            setTimeout(
+              () => onOptionChange("appearance", "normal" as AppearanceLevel),
+              100,
+            );
+          }}
+        >
+          Maximise
+        </button>
       </div>
 
       <Slider
@@ -148,7 +158,7 @@ export function AppearanceOptions({
         checked={options.displayNightOrder}
         onChange={(value) => onOptionChange("displayNightOrder", value)}
       /> */}
-      
+
       {/* <Toggle
         label="Include Player Counts"
         checked={options.displayPlayerCounts}

@@ -125,8 +125,8 @@ export function FancyDoc({
         nightOrders={nightOrders}
         options={{
           ...options,
-          displayNightOrder:false,
-          displayPlayerCounts:false
+          displayNightOrder: false,
+          displayPlayerCounts: false,
         }}
       />
     </div>

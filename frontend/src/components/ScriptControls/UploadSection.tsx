@@ -5,12 +5,7 @@ interface UploadSectionProps {
   onLoadExampleTeensyville: () => void;
 }
 
-export function UploadSection({
-  hasScript,
-  onFileUpload,
-  onLoadExample,
-  onLoadExampleTeensyville,
-}: UploadSectionProps) {
+export function UploadSection({ onFileUpload }: UploadSectionProps) {
   const isMac = navigator.userAgent.includes("Mac");
   return (
     <>

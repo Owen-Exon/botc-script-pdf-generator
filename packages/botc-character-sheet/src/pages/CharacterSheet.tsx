@@ -17,8 +17,8 @@ interface CharacterSheetProps {
   author?: string;
   characters: GroupedCharacters;
   jinxes: Jinx[];
-  showJinxes?:boolean;
-  showfabledAndLoric?:boolean
+  showJinxes?: boolean;
+  showfabledAndLoric?: boolean;
   fabledOrLoric?: FabledOrLoric[];
   bootleggerRules?: string[];
   options: ScriptOptions;
