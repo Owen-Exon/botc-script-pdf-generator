@@ -237,13 +237,18 @@ function EditMode() {
     }
   };
 
-  const handleAddColor = () => {
+  const handleAddColor = (index:number) => {
+    console.log(index)
     if (typeof options.color === "string") {
       // Convert single color to array with new color
-      handleColorChange([options.color, randomColor()]);
+      const arr = [options.color]
+      arr.splice(index,0,randomColor())
+      handleColorChange(arr);
     } else if (Array.isArray(options.color)) {
       // Add new color to existing array
-      handleColorChange([...options.color, randomColor()]);
+      const arr = [...options.color]
+      arr.splice(index,0,randomColor())
+      handleColorChange(arr);
     }
   };
 

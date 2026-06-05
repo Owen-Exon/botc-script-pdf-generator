@@ -4,7 +4,7 @@ interface ColorPickerProps {
   color: string | string[];
   onColorChange: (color: string | string[]) => void;
   onColorArrayChange: (index: number, color: string) => void;
-  onAddColor: () => void;
+  onAddColor: (index:number) => void;
   onRemoveColor: (index: number) => void;
 }
 
@@ -37,10 +37,17 @@ export function ColorPicker({
           >
             🎲
           </button>
+          <button
+            onClick={() => onAddColor(0)}
+            className="update-button color-picker-action-button"
+            title="Add another color"
+          >
+            +
+          </button>
         </div>
       ) : (
         <div className="color-picker-gradient">
-          {(color as string[]).map((c, index) => (
+          {color.map((c, index) => (
             <div key={index} className="color-picker-row">
               <input
                 type="color"
@@ -60,26 +67,33 @@ export function ColorPicker({
               >
                 🎲
               </button>
-              {(color as string[]).length > 1 && (
-                <button
-                  onClick={() => onRemoveColor(index)}
-                  className="update-button color-picker-action-button"
-                  title="Remove this color"
-                >
-                  ×
-                </button>
-              )}
+              <button
+                onClick={() => onAddColor(index)}
+                className="update-button color-picker-action-button"
+                title="Add another color"
+              >
+                +
+              </button>
+              <button
+                onClick={() => onRemoveColor(index)}
+                className="update-button color-picker-action-button"
+                title="Remove this color"
+              >
+                ×
+              </button>
             </div>
           ))}
         </div>
       )}
-      <button
-        onClick={onAddColor}
-        className="update-button color-picker-add-button"
+      <div className="color-picker-row">
+        <button
+        onClick={() => onAddColor((color as string[]).length)}
+        className="update-button color-picker-action-button"
         title="Add another color"
-      >
-        + Add Color
-      </button>
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }

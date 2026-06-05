@@ -11,7 +11,7 @@ interface AppearanceOptionsProps {
   ) => void;
   onColorChange: (color: string | string[]) => void;
   onColorArrayChange: (index: number, color: string) => void;
-  onAddColor: () => void;
+  onAddColor: (index:number) => void;
   onRemoveColor: (index: number) => void;
   onLogoChange: (logo: string) => void;
 }
