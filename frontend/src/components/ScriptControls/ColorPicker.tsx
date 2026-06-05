@@ -23,7 +23,7 @@ export function ColorPicker({
         {isGradient ? "Gradient Colours:" : "Colour:"}
       </label>
       {!isGradient ? (
-        <>
+        <div className="color-picker-row">
           <input
             id="sidebar-color"
             type="color"
@@ -37,7 +37,7 @@ export function ColorPicker({
           >
             🎲
           </button>
-        </>
+        </div>
       ) : (
         <div className="color-picker-gradient">
           {(color as string[]).map((c, index) => (
@@ -71,15 +71,15 @@ export function ColorPicker({
               )}
             </div>
           ))}
-          <button
-            onClick={onAddColor}
-            className="update-button color-picker-add-button"
-            title="Add another color"
-          >
-            + Add Color
-          </button>
         </div>
       )}
+      <button
+        onClick={onAddColor}
+        className="update-button color-picker-add-button"
+        title="Add another color"
+      >
+        + Add Color
+      </button>
     </div>
   );
 }

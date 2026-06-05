@@ -74,6 +74,7 @@ export interface ScriptOptions {
   titleStyle: TitleStyle;
   dimensions: PageDimensions;
   teensy: boolean;
+  presetColors: Record<string, string|string[]>;
 }
 
 export interface ParsedScript {

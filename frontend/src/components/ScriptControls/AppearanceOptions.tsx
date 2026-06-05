@@ -33,6 +33,25 @@ export function AppearanceOptions({
         onAddColor={onAddColor}
         onRemoveColor={onRemoveColor}
       />
+
+      <div className="color-presets-container">
+        {Object.keys(options.presetColors).map((id) => (
+          <button
+            className="secondary-button"
+            onClick={
+              () => {
+                options.color = options.presetColors[id]; onColorChange(options.color)
+              }
+            }
+          >
+            {id}
+          </button>
+        ))}
+      </div>
+
+      <hr/>
+      
+
       {/* <div className="form-control">
         <label className="form-control-label">
           <span className="form-control-text">Logo URL</span>
@@ -97,11 +116,6 @@ export function AppearanceOptions({
         checked={options.showNightSheet}
         onChange={(value) => onOptionChange("showNightSheet", value)}
       /> */}
-      <Toggle
-        label="Teensy Mode"
-        checked={options.teensy}
-        onChange={(value) => onOptionChange("teensy", value)}
-      />
 
       <div className="scaleOptionContainer">
         <Select
@@ -118,14 +132,16 @@ export function AppearanceOptions({
           }
         />
         <button
-          className="calcScale-button"
-          onClick={() => {
-            onOptionChange("appearance", "mega-compact" as AppearanceLevel);
-            setTimeout(
-              () => onOptionChange("appearance", "normal" as AppearanceLevel),
-              100,
-            );
-          }}
+          className="secondary-button"
+          onClick={
+            () => {
+              onOptionChange("appearance", "mega-compact" as AppearanceLevel);
+              setTimeout(
+                () => onOptionChange("appearance", "normal" as AppearanceLevel),
+                100,
+              );
+            }
+          }
         >
           Maximise
         </button>
@@ -139,6 +155,14 @@ export function AppearanceOptions({
         step={0.1}
         displayValue={options.iconScale.toFixed(1)}
         onChange={(value) => onOptionChange("iconScale", value)}
+      />
+
+      <hr/>
+
+      <Toggle
+        label="Teensy Mode"
+        checked={options.teensy}
+        onChange={(value) => onOptionChange("teensy", value)}
       />
 
       <Toggle

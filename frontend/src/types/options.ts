@@ -114,4 +114,10 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
   },
   dimensions: { width: 210, height: 297, margin: 0, bleed: 0 },
   teensy: false,
+  presetColors: {
+    "Red" : "#f00",
+    "Green" : "#0f0",
+    "BlueRed" : ["#00f","#f00"]
+
+  }
 };
