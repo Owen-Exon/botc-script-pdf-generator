@@ -237,11 +237,10 @@ function EditMode() {
     }
   };
 
-  const handleAddColor = (index:number) => {
-
+  const handleAddColor = (index: number) => {
     // Add new color to existing array
-    const arr = options.color
-    arr.splice(index,0,randomColor())
+    const arr = options.color;
+    arr.splice(index, 0, randomColor());
     handleColorChange(arr);
   };
 
@@ -249,9 +248,7 @@ function EditMode() {
     if (Array.isArray(options.color) && options.color.length > 1) {
       const newColorArray = options.color.filter((_, i) => i !== index);
       // If only one color left, convert back to string
-      handleColorChange(
-        newColorArray,
-      );
+      handleColorChange(newColorArray);
     }
   };
 

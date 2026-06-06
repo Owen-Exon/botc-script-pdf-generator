@@ -38,7 +38,7 @@ export function getInitialOptionsFromUrl(): ScriptOptions {
       if (!isNaN(num)) (options[key] as number) = num;
     } else if (key === "color") {
       // Color can be string or string[]
-      options.color = param.split(",").map((c) => c.trim())
+      options.color = param.split(",").map((c) => c.trim());
     } else if (typeof defaultValue === "string") {
       (options[key] as string) = param;
     }

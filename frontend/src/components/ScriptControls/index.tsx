@@ -19,7 +19,7 @@ interface ScriptControlsProps {
   onLoadExampleTeensyville: () => void;
   onColorChange: (color: string[]) => void;
   onColorArrayChange: (index: number, color: string) => void;
-  onAddColor: (index:number) => void;
+  onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
   onLogoChange: (logo: string) => void;
   onOptionChange: <K extends keyof ScriptOptions>(

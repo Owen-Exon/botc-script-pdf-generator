@@ -119,9 +119,9 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
     "BMR" : ["#935e2a"],
     "SAV" : ["#351a75"],
     "Green" : ["#1e6c14"],
-    "Poison & Blood":["#7c2222","#1d115a"],
-    "Fire & Ice":["#4271ae","#b8451e"],
-    "6ft under":["#4a6440","#3d2c10","#3d2c10"],
-    "Mono":["#fff","#000"]
-  }
+    "Poison & Blood" : ["#7c2222", "#1d115a"],
+    "Fire & Ice" : ["#4271ae", "#b8451e"],
+    "6ft under" : ["#4a6440", "#3d2c10", "#3d2c10"],
+    "Mono" : ["#fff", "#000"],
+  },
 };

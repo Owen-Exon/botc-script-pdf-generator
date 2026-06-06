@@ -9,7 +9,7 @@ interface AppearanceOptionsProps {
   ) => void;
   onColorChange: (color: string[]) => void;
   onColorArrayChange: (index: number, color: string) => void;
-  onAddColor: (index:number) => void;
+  onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
   onLogoChange: (logo: string) => void;
 }
@@ -35,16 +35,15 @@ export function AppearanceOptions({
         {Object.keys(options.presetColors).map((id) => (
           <button
             className="secondary-button"
-            onClick={
-              () => {
-                options.color = options.presetColors[id]; onColorChange(options.color)
-              }
-            }
+            onClick={() => {
+              options.color = options.presetColors[id];
+              onColorChange(options.color);
+            }}
           >
             {id}
           </button>
         ))}
-      </div> 
+      </div>
 
       {/* <div className="form-control">
         <label className="form-control-label">
@@ -122,7 +121,6 @@ export function AppearanceOptions({
         checked={options.displayPlayerCounts}
         onChange={(value) => onOptionChange("displayPlayerCounts", value)}
       /> */}
-
     </>
   );
 }

@@ -14,7 +14,7 @@ interface CharacterSheetOptionsProps {
 
 export function CharacterSheetOptions({
   options,
-  onOptionChange
+  onOptionChange,
 }: CharacterSheetOptionsProps) {
   return (
     <>
@@ -34,15 +34,13 @@ export function CharacterSheetOptions({
         />
         <button
           className="secondary-button"
-          onClick={
-            () => {
-              onOptionChange("appearance", "mega-compact" as AppearanceLevel);
-              setTimeout(
-                () => onOptionChange("appearance", "normal" as AppearanceLevel),
-                100,
-              );
-            }
-          }
+          onClick={() => {
+            onOptionChange("appearance", "mega-compact" as AppearanceLevel);
+            setTimeout(
+              () => onOptionChange("appearance", "normal" as AppearanceLevel),
+              100,
+            );
+          }}
         >
           Maximise
         </button>
@@ -57,7 +55,7 @@ export function CharacterSheetOptions({
         onChange={(value) => onOptionChange("iconScale", value)}
       />
 
-      <hr/>
+      <hr />
 
       <Toggle
         label="Teensy Mode"
