@@ -48,7 +48,7 @@ export const teamColours: Record<CharacterTeam, string> = {
 /**
  * Normalizes color input to an array of colors
  */
-export function normalizeColors(color: string | string[]): string[] {
+export function normalizeColors(color: string[]): string[] {
   if (Array.isArray(color)) {
     return color;
   }
@@ -58,7 +58,7 @@ export function normalizeColors(color: string | string[]): string[] {
 /**
  * Checks if we're in multi-color mode (2+ colors)
  */
-export function isMultiColor(color: string | string[]): boolean {
+export function isMultiColor(color: string[]): boolean {
   const colors = normalizeColors(color);
   return colors.length >= 2;
 }
@@ -98,7 +98,7 @@ export function createGradient(colors: string[], angle: number = 20): string {
  * @param angle Gradient angle in degrees (default: 90 for vertical)
  */
 export function createOverlayBackground(
-  color: string | string[],
+  color: string[],
   angle: number = 90,
 ): string {
   const colors = normalizeColors(color);

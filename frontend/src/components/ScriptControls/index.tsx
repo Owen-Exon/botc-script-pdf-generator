@@ -16,7 +16,7 @@ interface ScriptControlsProps {
   onFileUpload: (event: Event) => void;
   onLoadExample: () => void;
   onLoadExampleTeensyville: () => void;
-  onColorChange: (color: string | string[]) => void;
+  onColorChange: (color: string[]) => void;
   onColorArrayChange: (index: number, color: string) => void;
   onAddColor: (index:number) => void;
   onRemoveColor: (index: number) => void;

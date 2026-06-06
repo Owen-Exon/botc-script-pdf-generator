@@ -673,6 +673,25 @@ select.form-control-input:focus {
   flex: 1;
 }
 
+.color-textarea {
+  flex-grow: 1;
+  padding: 3px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-family: "Courier New", Consolas, Monaco, monospace;
+  font-size: 13px;
+  resize: vertical;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+  flex: 1;
+  /* min-height: 25px; */
+}
+
+.color-textarea.error {
+  border-color: rgb(133, 43, 43);
+}
+
 .script-editor-textarea:focus {
   outline: none;
   border-color: var(--button-bg);

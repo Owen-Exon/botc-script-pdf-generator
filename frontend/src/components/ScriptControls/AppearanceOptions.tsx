@@ -9,7 +9,7 @@ interface AppearanceOptionsProps {
     key: K,
     value: ScriptOptions[K],
   ) => void;
-  onColorChange: (color: string | string[]) => void;
+  onColorChange: (color: string[]) => void;
   onColorArrayChange: (index: number, color: string) => void;
   onAddColor: (index:number) => void;
   onRemoveColor: (index: number) => void;

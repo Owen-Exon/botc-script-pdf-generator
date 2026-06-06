@@ -50,7 +50,7 @@ export interface TitleStyle {
 }
 
 export interface ScriptOptions {
-  color: string | string[];
+  color: string[];
   logo: string;
   showLogo: boolean;
   showTitle: boolean;
@@ -74,7 +74,7 @@ export interface ScriptOptions {
   titleStyle: TitleStyle;
   dimensions: PageDimensions;
   teensy: boolean;
-  presetColors: Record<string, string|string[]>;
+  presetColors: Record<string, string[]>;
 }
 
 export interface ParsedScript {

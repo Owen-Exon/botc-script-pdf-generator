@@ -10,7 +10,7 @@ interface SavedScriptsPanelProps {
   onClose: () => void;
 }
 
-function getScriptColour(saved: SavedScript): string | string[] | null {
+function getScriptColour(saved: SavedScript): string[] | null {
   for (const element of saved.script) {
     if (
       typeof element === "object" &&
@@ -19,16 +19,14 @@ function getScriptColour(saved: SavedScript): string | string[] | null {
       element.id === "_meta"
     ) {
       const colour = (element as Record<string, unknown>).colour;
-      if (typeof colour === "string") return colour;
-      if (Array.isArray(colour) && colour.length > 0) return colour as string[];
+      return colour as string[];
     }
   }
   return null;
 }
 
-function colourCssVar(colour: string | string[] | null): string | undefined {
+function colourCssVar(colour: string[] | null): string | undefined {
   if (!colour) return undefined;
-  if (typeof colour === "string") return colour;
   return `linear-gradient(to bottom, ${colour.join(", ")})`;
 }
 

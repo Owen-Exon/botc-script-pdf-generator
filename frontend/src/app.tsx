@@ -128,7 +128,7 @@ function EditMode() {
       handleColorChange(options.color);
     } else if (script.metadata?.colour) {
       const colour = script.metadata.colour;
-      if (typeof colour === "string" || Array.isArray(colour)) {
+      if (Array.isArray(colour)) {
         updateOption("color", colour);
       }
     }
@@ -211,7 +211,7 @@ function EditMode() {
     createEntry(rawScript, options, name);
   };
 
-  const handleColorChange = (newColor: string | string[]) => {
+  const handleColorChange = (newColor: string[]) => {
     updateOption("color", newColor);
 
     // Update the colour in the script metadata
@@ -238,18 +238,11 @@ function EditMode() {
   };
 
   const handleAddColor = (index:number) => {
-    console.log(index)
-    if (typeof options.color === "string") {
-      // Convert single color to array with new color
-      const arr = [options.color]
-      arr.splice(index,0,randomColor())
-      handleColorChange(arr);
-    } else if (Array.isArray(options.color)) {
-      // Add new color to existing array
-      const arr = [...options.color]
-      arr.splice(index,0,randomColor())
-      handleColorChange(arr);
-    }
+
+    // Add new color to existing array
+    const arr = options.color
+    arr.splice(index,0,randomColor())
+    handleColorChange(arr);
   };
 
   const handleRemoveColor = (index: number) => {
@@ -257,7 +250,7 @@ function EditMode() {
       const newColorArray = options.color.filter((_, i) => i !== index);
       // If only one color left, convert back to string
       handleColorChange(
-        newColorArray.length === 1 ? newColorArray[0] : newColorArray,
+        newColorArray,
       );
     }
   };

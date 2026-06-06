@@ -232,7 +232,7 @@ function Header({
   );
 }
 
-function Sidebar({ color }: { color: string | string[] }) {
+function Sidebar({ color }: { color: string[] }) {
   const overlayBackground = createOverlayBackground(color, 180);
   return (
     <div className="sidebar-container">
