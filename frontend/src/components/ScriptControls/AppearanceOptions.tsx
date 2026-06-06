@@ -1,7 +1,5 @@
 import { ScriptOptions } from "botc-character-sheet";
 import { ColorPicker } from "./ColorPicker";
-import { Toggle, Select, Slider } from "../ui";
-import { AppearanceLevel } from "../../types/options";
 
 interface AppearanceOptionsProps {
   options: ScriptOptions;
@@ -18,7 +16,6 @@ interface AppearanceOptionsProps {
 
 export function AppearanceOptions({
   options,
-  onOptionChange,
   onColorChange,
   onColorArrayChange,
   onAddColor,
@@ -47,10 +44,7 @@ export function AppearanceOptions({
             {id}
           </button>
         ))}
-      </div>
-
-      <hr/>
-      
+      </div> 
 
       {/* <div className="form-control">
         <label className="form-control-label">
@@ -117,66 +111,6 @@ export function AppearanceOptions({
         onChange={(value) => onOptionChange("showNightSheet", value)}
       /> */}
 
-      <div className="scaleOptionContainer">
-        <Select
-          label="Sizing:"
-          value={options.appearance}
-          options={[
-            { value: "normal", label: "Normal" },
-            { value: "compact", label: "Small" },
-            { value: "super-compact", label: "Smaller" },
-            { value: "mega-compact", label: "Smallest" },
-          ]}
-          onChange={(value) =>
-            onOptionChange("appearance", value as AppearanceLevel)
-          }
-        />
-        <button
-          className="secondary-button"
-          onClick={
-            () => {
-              onOptionChange("appearance", "mega-compact" as AppearanceLevel);
-              setTimeout(
-                () => onOptionChange("appearance", "normal" as AppearanceLevel),
-                100,
-              );
-            }
-          }
-        >
-          Maximise
-        </button>
-      </div>
-
-      <Slider
-        label="Icon Scale"
-        value={options.iconScale}
-        min={0.5}
-        max={3}
-        step={0.1}
-        displayValue={options.iconScale.toFixed(1)}
-        onChange={(value) => onOptionChange("iconScale", value)}
-      />
-
-      <hr/>
-
-      <Toggle
-        label="Teensy Mode"
-        checked={options.teensy}
-        onChange={(value) => onOptionChange("teensy", value)}
-      />
-
-      <Toggle
-        label="Show Jinxes"
-        checked={options.showJinxes}
-        onChange={(value) => onOptionChange("showJinxes", value)}
-      />
-
-      <Toggle
-        label="Show Fabled / Loric"
-        checked={options.showfabledAndLoric}
-        onChange={(value) => onOptionChange("showfabledAndLoric", value)}
-      />
-
       {/* <Toggle
         label="Include Night Order"
         checked={options.displayNightOrder}
@@ -189,13 +123,6 @@ export function AppearanceOptions({
         onChange={(value) => onOptionChange("displayPlayerCounts", value)}
       /> */}
 
-      {options.overleaf === "backingSheet" && (
-        <Toggle
-          label="Shrink Minor Words"
-          checked={options.formatMinorWords}
-          onChange={(value) => onOptionChange("formatMinorWords", value)}
-        />
-      )}
     </>
   );
 }

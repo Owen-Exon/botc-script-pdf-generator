@@ -6,6 +6,7 @@ import { FontOptions } from "./FontOptions";
 import { PrintOptions } from "./PrintOptions";
 import { ActionButtons } from "./ActionButtons";
 import { ScriptEditor } from "../ScriptEditor";
+import { CharacterSheetOptions } from "./CharacterSheetOptions";
 
 interface ScriptControlsProps {
   hasScript: boolean;
@@ -97,7 +98,7 @@ export function ScriptControls({
               onSaveToLibrary={onSaveToLibrary}
             />
 
-            <CollapsibleSection title="General">
+            <CollapsibleSection title="Color">
               <AppearanceOptions
                 options={options}
                 onOptionChange={onOptionChange}
@@ -106,6 +107,13 @@ export function ScriptControls({
                 onAddColor={onAddColor}
                 onRemoveColor={onRemoveColor}
                 onLogoChange={onLogoChange}
+              />
+            </CollapsibleSection>
+
+            <CollapsibleSection title="Layout">
+              <CharacterSheetOptions
+                options={options}
+                onOptionChange={onOptionChange}
               />
             </CollapsibleSection>
 

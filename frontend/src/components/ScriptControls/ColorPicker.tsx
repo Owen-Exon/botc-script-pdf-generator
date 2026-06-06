@@ -18,9 +18,6 @@ export function ColorPicker({
   const colRegex = /^#[0-9A-Fa-f]{6}(?:\s*,\s*#[0-9A-Fa-f]{6})*$/
   return (
     <div className="color-picker-section">
-      <label className="color-label">
-        Colour:
-      </label>
       <div className="color-picker-gradient">
         {color.map((c, index) => (
           <div key={index} className="color-picker-row">
