@@ -20,7 +20,11 @@ export const BottomTrimSheet = ({
   const { color, colorAngle, includeMargins, dimensions } = options;
   const colors = normalizeColors(color);
   const gradient = createGradient(colors, 20);
-  const overlayBackground = createOverlayBackground(color, colorAngle + 180);
+  const overlayBackground = createOverlayBackground(
+    color,
+    colorAngle,
+    "footer",
+  );
 
   return (
     <PrintablePage dimensions={dimensions}>

@@ -240,7 +240,11 @@ function Sidebar({
   color: string[];
   colorAngle: number;
 }) {
-  const overlayBackground = createOverlayBackground(color, colorAngle + 180);
+  const overlayBackground = createOverlayBackground(
+    color,
+    colorAngle,
+    "sidebar",
+  );
   return (
     <div className="sidebar-container">
       <div className="sidebar-background"></div>

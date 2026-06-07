@@ -36,7 +36,7 @@ export const SheetBack = ({
     ));
   };
 
-  const overlayBackground = createOverlayBackground(color, colorAngle + 180);
+  const overlayBackground = createOverlayBackground(color, colorAngle, "page");
 
   return (
     <PrintablePage dimensions={dimensions}>

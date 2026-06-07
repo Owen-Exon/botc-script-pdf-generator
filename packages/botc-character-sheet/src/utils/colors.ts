@@ -100,7 +100,26 @@ export function createGradient(colors: string[], angle: number = 20): string {
 export function createOverlayBackground(
   color: string[],
   angle: number = 0,
+  type: "page" | "sidebar" | "footer",
 ): string {
+  console.log(angle);
+  let trueAngle: number;
+  if (
+    type === "sidebar" &&
+    Math.min(Math.abs(angle - 90), Math.abs(angle - 270)) < 45
+  ) {
+    trueAngle = angle + 90;
+  } else if (
+    type === "footer" &&
+    Math.min(Math.abs(angle - 90), Math.abs(angle - 270)) >= 45
+  ) {
+    trueAngle = angle + 90;
+  } else {
+    trueAngle = angle;
+  }
+
+  trueAngle += 180;
+
   const colors = normalizeColors(color);
 
   if (colors.length === 1) {
@@ -114,5 +133,5 @@ export function createOverlayBackground(
     })
     .join(", ");
 
-  return `linear-gradient(${angle}deg, ${stops})`;
+  return `linear-gradient(${trueAngle}deg, ${stops})`;
 }

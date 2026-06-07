@@ -237,7 +237,12 @@ function EditMode() {
   };
 
   const handleColorAngleChange = (newAngle: number) => {
-    updateOption("colorAngle", newAngle);
+    const standardAngle =
+      Math.sign(newAngle) === 1 ? newAngle % 360 : 360 + (newAngle % 360);
+
+    const trueAngle = standardAngle === 360 ? 0 : standardAngle;
+
+    updateOption("colorAngle", trueAngle);
 
     // Update the angle in the script metadata
     if (!rawScript) return;
@@ -245,7 +250,7 @@ function EditMode() {
     const updatedScript = rawScript.map((element) => {
       if (typeof element === "object" && element !== null && "id" in element) {
         if (element.id === "_meta") {
-          return { ...element, colorAngle: newAngle };
+          return { ...element, colorAngle: trueAngle };
         }
       }
       return element;
