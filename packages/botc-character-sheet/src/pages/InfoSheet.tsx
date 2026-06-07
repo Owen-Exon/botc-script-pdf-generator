@@ -151,7 +151,7 @@ export const InfoSheet = ({
                 Base Character Counts
               </h4>
               <div className="info-sheet-section">
-                <PlayerCount background={false} />
+                <PlayerCount background={false} teensy={options.teensy} />
               </div>
             </>
           )}

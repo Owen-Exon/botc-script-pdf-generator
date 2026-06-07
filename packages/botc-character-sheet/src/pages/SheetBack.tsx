@@ -65,7 +65,7 @@ export const SheetBack = ({
         ></div>
 
         <div className="back-info-container">
-          {displayPlayerCounts && <PlayerCount />}
+          {displayPlayerCounts && <PlayerCount teensy={options.teensy} />}
 
           {displayNightOrder && (
             <NightOrderPanel

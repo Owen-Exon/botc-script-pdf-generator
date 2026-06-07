@@ -1,8 +1,8 @@
 import "./PlayerCount.css";
 
 const PLAYER_COUNTS = {
-  "5": [3, 0, 1, 1],
-  "6": [3, 1, 1, 1],
+  // "5": [3, 0, 1, 1],
+  // "6": [3, 1, 1, 1],
   "7": [5, 0, 1, 1],
   "8": [5, 1, 1, 1],
   "9": [5, 2, 1, 1],
@@ -14,11 +14,21 @@ const PLAYER_COUNTS = {
   "15+": [9, 2, 3, 1],
 };
 
+const TEENSY_PLAYER_COUNTS = {
+  "5": [3, 0, 1, 1],
+  "6": [3, 1, 1, 1],
+};
+
 export type PlayerCountProps = {
+  teensy: boolean;
   background?: boolean;
 };
 
-export const PlayerCount = ({ background = true }: PlayerCountProps) => {
+export const PlayerCount = ({
+  teensy,
+  background = true,
+}: PlayerCountProps) => {
+  const PLAY_PLAYER_COUNTS = teensy ? TEENSY_PLAYER_COUNTS : PLAYER_COUNTS;
   return (
     <>
       <div
@@ -33,7 +43,7 @@ export const PlayerCount = ({ background = true }: PlayerCountProps) => {
           <div className="row-title evil-count">Minions</div>
           <div className="row-title evil-count">Demons</div>
         </div>
-        {Object.entries(PLAYER_COUNTS).map(([playerCount, teamCounts]) => (
+        {Object.entries(PLAY_PLAYER_COUNTS).map(([playerCount, teamCounts]) => (
           <div className="count-column">
             <div className="player-count">{playerCount}</div>
             <div className="good-count">{teamCounts[0]}</div>
