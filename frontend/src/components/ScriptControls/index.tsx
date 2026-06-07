@@ -18,6 +18,7 @@ interface ScriptControlsProps {
   onLoadExample: () => void;
   onLoadExampleTeensyville: () => void;
   onColorChange: (color: string[]) => void;
+  onColorAngleChange: (angle: number) => void;
   onColorArrayChange: (index: number, color: string) => void;
   onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
@@ -51,6 +52,7 @@ export function ScriptControls({
   onLoadExample,
   onLoadExampleTeensyville,
   onColorChange,
+  onColorAngleChange,
   onColorArrayChange,
   onAddColor,
   onRemoveColor,
@@ -101,8 +103,8 @@ export function ScriptControls({
             <CollapsibleSection title="Color">
               <AppearanceOptions
                 options={options}
-                onOptionChange={onOptionChange}
                 onColorChange={onColorChange}
+                onColorAngleChange={onColorAngleChange}
                 onColorArrayChange={onColorArrayChange}
                 onAddColor={onAddColor}
                 onRemoveColor={onRemoveColor}

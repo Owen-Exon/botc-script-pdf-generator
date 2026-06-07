@@ -18,7 +18,7 @@ export type {
   NetworkPayload,
   PageDimensions,
 } from "./types";
-export { darken, parseRgb, rgbString } from "./utils/colours";
+export { darken, parseRgb, rgbString } from "./utils/colors";
 export { ROLES_BY_ID } from "./data/roles";
 export { JINXES } from "./data/jinxes";
 export { FIRST_NIGHT_ORDER, OTHER_NIGHT_ORDER } from "./data/nightsheet";

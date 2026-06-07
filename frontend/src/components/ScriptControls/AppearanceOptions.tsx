@@ -3,11 +3,8 @@ import { ColorPicker } from "./ColorPicker";
 
 interface AppearanceOptionsProps {
   options: ScriptOptions;
-  onOptionChange: <K extends keyof ScriptOptions>(
-    key: K,
-    value: ScriptOptions[K],
-  ) => void;
   onColorChange: (color: string[]) => void;
+  onColorAngleChange: (angle: number) => void;
   onColorArrayChange: (index: number, color: string) => void;
   onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
@@ -17,6 +14,7 @@ interface AppearanceOptionsProps {
 export function AppearanceOptions({
   options,
   onColorChange,
+  onColorAngleChange,
   onColorArrayChange,
   onAddColor,
   onRemoveColor,
@@ -24,8 +22,9 @@ export function AppearanceOptions({
   return (
     <>
       <ColorPicker
-        color={options.color}
+        options={options}
         onColorChange={onColorChange}
+        onColorAngleChange={onColorAngleChange}
         onColorArrayChange={onColorArrayChange}
         onAddColor={onAddColor}
         onRemoveColor={onRemoveColor}

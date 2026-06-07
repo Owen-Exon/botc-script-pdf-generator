@@ -3,7 +3,7 @@ import {
   normalizeColors,
   createGradient,
   createOverlayBackground,
-} from "../utils/colours";
+} from "../utils/colors";
 import "./BottomTrimSheet.css";
 import { PrintablePage } from "./PrintablePage";
 import { ScriptOptions } from "../types";
@@ -17,10 +17,10 @@ export const BottomTrimSheet = ({
   options,
   children,
 }: BottomTrimSheetProps) => {
-  const { color, includeMargins, dimensions } = options;
+  const { color, colorAngle, includeMargins, dimensions } = options;
   const colors = normalizeColors(color);
   const gradient = createGradient(colors, 20);
-  const overlayBackground = createOverlayBackground(color, 180);
+  const overlayBackground = createOverlayBackground(color, colorAngle + 180);
 
   return (
     <PrintablePage dimensions={dimensions}>

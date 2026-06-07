@@ -82,6 +82,7 @@ export const TITLE_FONT_DEFAULTS: Record<
 
 export const DEFAULT_OPTIONS: ScriptOptions = {
   color: ["#7c2222"],
+  colorAngle: 0,
   logo: "",
   showLogo: true,
   showTitle: true,
@@ -122,6 +123,6 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
     "Poison & Blood" : ["#7c2222", "#1d115a"],
     "Fire & Ice" : ["#4271ae", "#b8451e"],
     "6ft under" : ["#4a6440", "#3d2c10", "#3d2c10"],
-    "Mono" : ["#fff", "#000"],
+    "Mono" : ["#ffffff", "#000000"],
   },
 };

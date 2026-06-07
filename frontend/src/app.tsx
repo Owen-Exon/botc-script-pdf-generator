@@ -126,11 +126,20 @@ function EditMode() {
     // Otherwise, load color from script metadata
     if (hasUrlParam("color")) {
       handleColorChange(options.color);
-    } else if (script.metadata?.colour) {
-      const colour = script.metadata.colour;
-      if (Array.isArray(colour)) {
-        updateOption("color", colour);
+    } else if (script.metadata?.color) {
+      const color = script.metadata.color;
+      if (Array.isArray(color)) {
+        updateOption("color", color);
       }
+    }
+
+    if (hasUrlParam("colorAngle")) {
+      handleColorAngleChange(options.colorAngle);
+    } else if (script.metadata?.colorAngle) {
+      const colorAngle = script.metadata.colorAngle;
+      updateOption("colorAngle", colorAngle as number);
+
+ 
     }
 
     // Same for logo
@@ -214,13 +223,13 @@ function EditMode() {
   const handleColorChange = (newColor: string[]) => {
     updateOption("color", newColor);
 
-    // Update the colour in the script metadata
+    // Update the color in the script metadata
     if (!rawScript) return;
 
     const updatedScript = rawScript.map((element) => {
       if (typeof element === "object" && element !== null && "id" in element) {
         if (element.id === "_meta") {
-          return { ...element, colour: newColor };
+          return { ...element, color: newColor };
         }
       }
       return element;
@@ -228,6 +237,24 @@ function EditMode() {
 
     updateScriptMetadata(updatedScript);
   };
+
+  const handleColorAngleChange = (newAngle:number) => {
+    updateOption("colorAngle", newAngle);
+
+    // Update the angle in the script metadata
+    if (!rawScript) return;
+
+    const updatedScript = rawScript.map((element) => {
+      if (typeof element === "object" && element !== null && "id" in element) {
+        if (element.id === "_meta") {
+          return { ...element, colorAngle: newAngle };
+        }
+      }
+      return element;
+    });
+
+    updateScriptMetadata(updatedScript);
+  }
 
   const handleColorArrayChange = (index: number, newColor: string) => {
     if (Array.isArray(options.color)) {
@@ -338,6 +365,7 @@ function EditMode() {
             onLoadExample={handleLoadExample}
             onLoadExampleTeensyville={handleLoadExampleTeensyville}
             onColorChange={handleColorChange}
+            onColorAngleChange={handleColorAngleChange}
             onColorArrayChange={handleColorArrayChange}
             onAddColor={handleAddColor}
             onRemoveColor={handleRemoveColor}

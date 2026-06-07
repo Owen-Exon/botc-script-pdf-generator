@@ -35,7 +35,7 @@ export function darken(color: string, darkenFactor: number) {
   return rgbString(rDark, gDark, bDark);
 }
 
-export const teamColours: Record<CharacterTeam, string> = {
+export const teamColors: Record<CharacterTeam, string> = {
   townsfolk: "#00469e",
   outsider: "#00469e",
   minion: "#580709",
@@ -99,7 +99,7 @@ export function createGradient(colors: string[], angle: number = 20): string {
  */
 export function createOverlayBackground(
   color: string[],
-  angle: number = 90,
+  angle: number = 0,
 ): string {
   const colors = normalizeColors(color);
 

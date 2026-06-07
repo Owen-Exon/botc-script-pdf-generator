@@ -1,7 +1,7 @@
 import { NightMarker, NightOrderEntry, ScriptOptions } from "../types";
 import { getImageSrc } from "../utils/nightOrder";
 import "./NightSheet.css";
-import { teamColours } from "../utils/colours";
+import { teamColors } from "../utils/colors";
 import { BottomTrimSheet } from "../components/BottomTrimSheet";
 
 export type NightSheetProps = {
@@ -70,8 +70,8 @@ const ReminderIcon = () => (
 export const NightSheetEntry = (props: NightSheetEntryProps) => {
   const src = getImageSrc(props.entry, props.iconUrlTemplate);
   const { reminderText, name } = getReminderText(props.entry, props.night);
-  const colour =
-    typeof props.entry === "string" ? "#222" : teamColours[props.entry.team];
+  const color =
+    typeof props.entry === "string" ? "#222" : teamColors[props.entry.team];
   if (!reminderText) {
     console.warn("No reminder text found for:", props.entry);
     return <></>;
@@ -94,7 +94,7 @@ export const NightSheetEntry = (props: NightSheetEntryProps) => {
     <div className="night-sheet-entry">
       <img src={src} className={isMarker ? "marker-icon" : undefined}></img>
       <div className="night-sheet-entry-text">
-        <p className="reminder-name" style={{ color: colour }}>
+        <p className="reminder-name" style={{ color: color }}>
           {name}
         </p>
         <p className="reminder-text">{renderText(reminderText)}</p>

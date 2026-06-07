@@ -61,14 +61,14 @@
     background 0.2s;
 }
 
-.saved-script-item[style*="--script-colour"]::after {
+.saved-script-item[style*="--script-color"]::after {
   content: "";
   position: absolute;
   top: -1px;
   bottom: -1px;
   left: -1px;
   width: 4px;
-  background: var(--script-colour);
+  background: var(--script-color);
   border-radius: 8px 0 0 8px;
 }
 

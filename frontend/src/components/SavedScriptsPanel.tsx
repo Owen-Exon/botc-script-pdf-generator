@@ -10,7 +10,7 @@ interface SavedScriptsPanelProps {
   onClose: () => void;
 }
 
-function getScriptColour(saved: SavedScript): string[] | null {
+function getScriptColor(saved: SavedScript): string[] | null {
   for (const element of saved.script) {
     if (
       typeof element === "object" &&
@@ -18,16 +18,16 @@ function getScriptColour(saved: SavedScript): string[] | null {
       "id" in element &&
       element.id === "_meta"
     ) {
-      const colour = (element as Record<string, unknown>).colour;
-      return colour as string[];
+      const color = (element as Record<string, unknown>).color;
+      return color as string[];
     }
   }
   return null;
 }
 
-function colourCssVar(colour: string[] | null): string | undefined {
-  if (!colour) return undefined;
-  return `linear-gradient(to bottom, ${colour.join(", ")})`;
+function colorCssVar(color: string[] | null): string | undefined {
+  if (!color) return undefined;
+  return `linear-gradient(to bottom, ${color.join(", ")})`;
 }
 
 export function SavedScriptsPanel({
@@ -65,15 +65,15 @@ export function SavedScriptsPanel({
       </div>
       <ul className="saved-scripts-list">
         {savedScripts.map((saved) => {
-          const colourValue = colourCssVar(getScriptColour(saved));
+          const colorValue = colorCssVar(getScriptColor(saved));
           const isActive = saved.id === activeScriptId;
           return (
             <li
               key={saved.id}
               className={`saved-script-item ${isActive ? "active" : ""}`}
               style={
-                colourValue
-                  ? ({ "--script-colour": colourValue } as Record<
+                colorValue
+                  ? ({ "--script-color": colorValue } as Record<
                       string,
                       string
                     >)

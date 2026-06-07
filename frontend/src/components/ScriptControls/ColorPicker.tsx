@@ -1,20 +1,25 @@
+import { ScriptOptions } from "botc-character-sheet";
 import { randomColor } from "../../types/options";
 
 interface ColorPickerProps {
-  color: string[];
+  options: ScriptOptions;
   onColorChange: (color: string[]) => void;
+  onColorAngleChange: (angle: number) => void
   onColorArrayChange: (index: number, color: string) => void;
   onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
 }
 
 export function ColorPicker({
-  color,
+  options,
   onColorChange,
+  onColorAngleChange,
   onColorArrayChange,
   onAddColor,
   onRemoveColor,
 }: ColorPickerProps) {
+  const { color, colorAngle } = options;
+
   const colRegex = /^#[0-9A-Fa-f]{6}(?:\s*,\s*#[0-9A-Fa-f]{6})*$/;
   return (
     <div className="color-picker-section">
@@ -62,6 +67,23 @@ export function ColorPicker({
           Copy
         </button>
         <span style="flex-grow:1"></span>
+        <div className="form-control">
+          <label className="form-control-label">
+            <span className="form-control-text">Angle</span>
+            <input
+              type="number"
+              value={colorAngle}
+              step={1}
+              onInput={(e) =>
+                onColorAngleChange(
+                  parseFloat((e.target as HTMLInputElement).value) || 0,
+                )
+              }
+              className="text-input"
+              style={{ width: "80px" }}
+            />
+          </label>
+        </div>
         <button
           onClick={() => onAddColor((color as string[]).length)}
           className="update-button color-picker-action-button"

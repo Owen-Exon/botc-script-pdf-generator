@@ -1,10 +1,10 @@
 import { type CSSProperties } from "preact";
 import {
-  teamColours,
+  teamColors,
   normalizeColors,
   createGradient,
   createOverlayBackground,
-} from "../utils/colours";
+} from "../utils/colors";
 import "./CharacterSheet.css";
 import { GroupedCharacters, Jinx, ScriptOptions } from "../types";
 import { FabledOrLoric } from "../utils/fabledOrLoric";
@@ -37,6 +37,7 @@ export function CharacterSheet({
 }: CharacterSheetProps) {
   const {
     color,
+    colorAngle,
     logo,
     showLogo,
     showTitle,
@@ -54,25 +55,25 @@ export function CharacterSheet({
       key: "townsfolk",
       title: "Townsfolk",
       chars: characters.townsfolk,
-      color: teamColours["townsfolk"],
+      color: teamColors["townsfolk"],
     },
     {
       key: "outsider",
       title: "Outsiders",
       chars: characters.outsider,
-      color: teamColours["outsider"],
+      color: teamColors["outsider"],
     },
     {
       key: "minion",
       title: "Minions",
       chars: characters.minion,
-      color: teamColours["minion"],
+      color: teamColors["minion"],
     },
     {
       key: "demon",
       title: "Demons",
       chars: characters.demon,
-      color: teamColours["demon"],
+      color: teamColors["demon"],
     },
   ].filter((section) => section.chars.length > 0);
 
@@ -109,7 +110,7 @@ export function CharacterSheet({
           className="character-sheet-background"
           src="/images/parchment_texture_a4_lightened.jpg"
         ></img>
-        <Sidebar color={color} />
+        <Sidebar color={color} colorAngle={colorAngle} />
         <div className="sheet-content">
           <Header
             showSwirls={showSwirls}
@@ -232,8 +233,14 @@ function Header({
   );
 }
 
-function Sidebar({ color }: { color: string[] }) {
-  const overlayBackground = createOverlayBackground(color, 180);
+function Sidebar({
+  color,
+  colorAngle,
+}: {
+  color: string[];
+  colorAngle: number;
+}) {
+  const overlayBackground = createOverlayBackground(color, colorAngle + 180);
   return (
     <div className="sidebar-container">
       <div className="sidebar-background"></div>

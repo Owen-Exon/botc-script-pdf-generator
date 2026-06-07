@@ -51,6 +51,7 @@ export interface TitleStyle {
 
 export interface ScriptOptions {
   color: string[];
+  colorAngle: number;
   logo: string;
   showLogo: boolean;
   showTitle: boolean;

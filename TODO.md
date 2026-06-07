@@ -1,6 +1,6 @@
-TODO:
+# TODO
 
-1. Improve colour system, especially on low saturation colours.
+1. Improve color system, especially on low saturation colors.
 2. Logo Support
 3. Replace swirls with different embellishment
 4. Better styling on mobile

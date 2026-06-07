@@ -3,7 +3,7 @@ import { NightOrders, ScriptOptions } from "../types";
 import { formatWithMinorWords } from "../utils/minorWordFormatter";
 import { NightOrderPanel } from "../components/NightOrderPanel";
 import { PlayerCount } from "../components/PlayerCount";
-import { createOverlayBackground } from "../utils/colours";
+import { createOverlayBackground } from "../utils/colors";
 import { PrintablePage } from "../components/PrintablePage";
 
 type SheetBackProps = {
@@ -19,6 +19,7 @@ export const SheetBack = ({
 }: SheetBackProps) => {
   const {
     color,
+    colorAngle,
     includeMargins,
     formatMinorWords,
     displayNightOrder,
@@ -35,7 +36,7 @@ export const SheetBack = ({
     ));
   };
 
-  const overlayBackground = createOverlayBackground(color, 180);
+  const overlayBackground = createOverlayBackground(color, colorAngle + 180);
 
   return (
     <PrintablePage dimensions={dimensions}>
