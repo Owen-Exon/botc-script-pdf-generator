@@ -73,10 +73,7 @@ export function SavedScriptsPanel({
               className={`saved-script-item ${isActive ? "active" : ""}`}
               style={
                 colorValue
-                  ? ({ "--script-color": colorValue } as Record<
-                      string,
-                      string
-                    >)
+                  ? ({ "--script-color": colorValue } as Record<string, string>)
                   : undefined
               }
               onClick={() => {

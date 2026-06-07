@@ -138,8 +138,6 @@ function EditMode() {
     } else if (script.metadata?.colorAngle) {
       const colorAngle = script.metadata.colorAngle;
       updateOption("colorAngle", colorAngle as number);
-
- 
     }
 
     // Same for logo
@@ -238,7 +236,7 @@ function EditMode() {
     updateScriptMetadata(updatedScript);
   };
 
-  const handleColorAngleChange = (newAngle:number) => {
+  const handleColorAngleChange = (newAngle: number) => {
     updateOption("colorAngle", newAngle);
 
     // Update the angle in the script metadata
@@ -254,7 +252,7 @@ function EditMode() {
     });
 
     updateScriptMetadata(updatedScript);
-  }
+  };
 
   const handleColorArrayChange = (index: number, newColor: string) => {
     if (Array.isArray(options.color)) {

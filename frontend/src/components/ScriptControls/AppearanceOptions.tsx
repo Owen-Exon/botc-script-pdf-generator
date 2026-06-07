@@ -34,9 +34,18 @@ export function AppearanceOptions({
         {Object.keys(options.presetColors).map((id) => (
           <button
             className="secondary-button"
-            onClick={() => {
-              options.color = options.presetColors[id];
-              onColorChange(options.color);
+            onClick={(e) => {
+              navigator.clipboard.writeText(`${options.presetColors[id]}`);
+              const element = e.target as HTMLElement;
+              element.innerHTML = "Coppied!";
+              setTimeout(
+                (element: HTMLElement, id: string) => {
+                  element.innerHTML = id;
+                },
+                1500,
+                element,
+                id,
+              );
             }}
           >
             {id}

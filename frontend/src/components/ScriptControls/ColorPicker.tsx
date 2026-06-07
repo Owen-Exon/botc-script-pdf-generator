@@ -4,7 +4,7 @@ import { randomColor } from "../../types/options";
 interface ColorPickerProps {
   options: ScriptOptions;
   onColorChange: (color: string[]) => void;
-  onColorAngleChange: (angle: number) => void
+  onColorAngleChange: (angle: number) => void;
   onColorArrayChange: (index: number, color: string) => void;
   onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
