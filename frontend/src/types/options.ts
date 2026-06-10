@@ -81,7 +81,7 @@ export const TITLE_FONT_DEFAULTS: Record<
 };
 
 export const DEFAULT_OPTIONS: ScriptOptions = {
-  color: ["#7c2222"],
+  color: ["#3d1010","#7c2222","#3d1010"],
   colorAngle: 0,
   logo: "",
   showLogo: true,
@@ -116,13 +116,15 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
   dimensions: { width: 210, height: 297, margin: 0, bleed: 0 },
   teensy: false,
   presetColors: {
-    "TB" : "#7c2222",
-    "BMR" : "#935e2a",
-    "SAV" : "#351a75",
-    "Green" : "#1e6c14",
+    "TB Red" : "#3d1010,#7c2222,#3d1010",
+    "BMR Orange" : "#3d2700,#d38c12,#3d2700",
+    "SAV Purple" : "#1a0b1e,#50255b,#1a0b1e",
+    "TAF Yellow" : "#493903,#e9b50a,#493903",
+    "GOS Green" : "#182f19,#2d5c2e,#182f19",
+    "MITHOTD Blue": "#082a44,#094e84,#082a44",
     "Poison & Blood" : "#7c2222,#1d115a",
     "Fire & Ice" : "#4271ae,#b8451e",
     "6ft under" : "#4a6440,#3d2c10,#3d2c10",
-    "Mono" : "#ffffff,#000000",
+    "Mono" : "#000000,#c2c2c2,#000000",
   },
 };
