@@ -82,6 +82,8 @@ export const TITLE_FONT_DEFAULTS: Record<
 
 export const DEFAULT_OPTIONS: ScriptOptions = {
   color: ["#3d1010","#7c2222","#3d1010"],
+  colorImage: "",
+  useImageColor:false,
   colorAngle: 0,
   logo: "",
   showLogo: true,
@@ -127,4 +129,9 @@ export const DEFAULT_OPTIONS: ScriptOptions = {
     "6ft under" : "#4a6440,#3d2c10,#3d2c10,0",
     "Mono" : "#000000,#c2c2c2,#000000,90",
   },
+  presetImages: {
+    "Orange Sun" : "images/overlayPresets/OrangeSun.png",
+    "Greens" : "images/overlayPresets/Greens.png",
+    "Galactic" : "https://images-assets.nasa.gov/image/astronomers-set-a-new-galaxy-distance-record_17389972462_o/astronomers-set-a-new-galaxy-distance-record_17389972462_o~medium.jpg"
+  }
 };

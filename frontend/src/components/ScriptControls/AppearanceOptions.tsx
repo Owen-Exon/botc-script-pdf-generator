@@ -1,5 +1,6 @@
 import { ScriptOptions } from "botc-character-sheet";
 import { ColorPicker } from "./ColorPicker";
+import { Toggle } from "../ui";
 
 interface AppearanceOptionsProps {
   options: ScriptOptions;
@@ -9,10 +10,15 @@ interface AppearanceOptionsProps {
   onAddColor: (index: number) => void;
   onRemoveColor: (index: number) => void;
   onLogoChange: (logo: string) => void;
+  onOptionChange: <K extends keyof ScriptOptions>(
+    key: K,
+    value: ScriptOptions[K],
+  ) => void;
 }
 
 export function AppearanceOptions({
   options,
+  onOptionChange,
   onColorChange,
   onColorAngleChange,
   onColorArrayChange,
@@ -21,8 +27,15 @@ export function AppearanceOptions({
 }: AppearanceOptionsProps) {
   return (
     <>
+      <Toggle
+        label="Use Image Overlay"
+        checked={options.useImageColor}
+        onChange={(value) => onOptionChange("useImageColor", value)}
+      />
+
       <ColorPicker
         options={options}
+        onOptionChange={onOptionChange}
         onColorChange={onColorChange}
         onColorAngleChange={onColorAngleChange}
         onColorArrayChange={onColorArrayChange}
@@ -30,12 +43,13 @@ export function AppearanceOptions({
         onRemoveColor={onRemoveColor}
       />
 
-      <div className="color-presets-container">
-        {Object.keys(options.presetColors).map((id) => (
+      {options.useImageColor ? (
+        <div className="color-presets-container">
+        {Object.keys(options.presetImages).map((id) => (
           <button
             className="secondary-button"
             onClick={(e) => {
-              navigator.clipboard.writeText(`${options.presetColors[id]}`);
+              navigator.clipboard.writeText(`${options.presetImages[id]}`);
               const element = e.target as HTMLElement;
               element.innerHTML = "Coppied!";
               setTimeout(
@@ -52,6 +66,32 @@ export function AppearanceOptions({
           </button>
         ))}
       </div>
+      ) : (
+        <div className="color-presets-container">
+          {Object.keys(options.presetColors).map((id) => (
+            <button
+              className="secondary-button"
+              onClick={(e) => {
+                navigator.clipboard.writeText(`${options.presetColors[id]}`);
+                const element = e.target as HTMLElement;
+                element.innerHTML = "Coppied!";
+                setTimeout(
+                  (element: HTMLElement, id: string) => {
+                    element.innerHTML = id;
+                  },
+                  1500,
+                  element,
+                  id,
+                );
+              }}
+            >
+              {id}
+            </button>
+          ))}
+        </div>
+      )}
+
+      
 
       {/* <div className="form-control">
         <label className="form-control-label">

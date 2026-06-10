@@ -25,6 +25,7 @@ export const SheetBack = ({
     displayNightOrder,
     displayPlayerCounts,
     dimensions,
+    useImageColor,colorImage
   } = options;
   const renderTitle = () => {
     const parts = title.split("&");
@@ -36,7 +37,11 @@ export const SheetBack = ({
     ));
   };
 
-  const overlayBackground = createOverlayBackground(color, colorAngle, "page");
+  const overlayBackground = createOverlayBackground(
+    useImageColor ? colorImage : color,
+    colorAngle,
+    "page"
+  );
 
   return (
     <PrintablePage dimensions={dimensions}>
@@ -61,7 +66,7 @@ export const SheetBack = ({
 
         <div
           className="sheet-back-overlay"
-          style={{ background: overlayBackground }}
+          style={{ backgroundImage: overlayBackground }}
         ></div>
 
         <div className="back-info-container">

@@ -17,11 +17,11 @@ export const BottomTrimSheet = ({
   options,
   children,
 }: BottomTrimSheetProps) => {
-  const { color, colorAngle, includeMargins, dimensions } = options;
+  const { color, colorAngle, includeMargins, dimensions,useImageColor,colorImage } = options;
   const colors = normalizeColors(color);
-  const gradient = createGradient(colors, 20);
+  const gradient = createGradient(useImageColor ? ["#000000"] : colors, 20);
   const overlayBackground = createOverlayBackground(
-    color,
+    useImageColor ? colorImage : color,
     colorAngle,
     "footer",
   );
@@ -61,7 +61,7 @@ export const BottomTrimSheet = ({
           <div className="info-footer-background"></div>
           <div
             className="info-footer-overlay"
-            style={{ background: overlayBackground }}
+            style={{ backgroundImage: overlayBackground }}
           ></div>
         </div>
       </div>

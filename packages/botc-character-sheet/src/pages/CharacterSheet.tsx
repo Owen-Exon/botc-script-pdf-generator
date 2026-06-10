@@ -49,6 +49,7 @@ export function CharacterSheet({
     inlineJinxIcons,
     iconUrlTemplate,
     dimensions,
+    useImageColor
   } = options;
   const sections = [
     {
@@ -78,7 +79,7 @@ export function CharacterSheet({
   ].filter((section) => section.chars.length > 0);
 
   const colors = normalizeColors(color);
-  const gradient = createGradient(colors, 20);
+  const gradient = createGradient(useImageColor ? ["#000000"] : colors , 20);
 
   const appearanceClass =
     appearance !== "normal" ? `appearance-${appearance}` : "";
@@ -110,7 +111,7 @@ export function CharacterSheet({
           className="character-sheet-background"
           src="/images/parchment_texture_a4_lightened.jpg"
         ></img>
-        <Sidebar color={color} colorAngle={colorAngle} />
+        <Sidebar options={options} colorAngle={colorAngle} />
         <div className="sheet-content">
           <Header
             showSwirls={showSwirls}
@@ -234,14 +235,15 @@ function Header({
 }
 
 function Sidebar({
-  color,
+  options,
   colorAngle,
 }: {
-  color: string[];
+  options: ScriptOptions;
   colorAngle: number;
 }) {
+  const { useImageColor , colorImage , color} = options;
   const overlayBackground = createOverlayBackground(
-    color,
+    useImageColor ? colorImage : color,
     colorAngle,
     "sidebar",
   );
@@ -250,7 +252,7 @@ function Sidebar({
       <div className="sidebar-background"></div>
       <div
         className="sidebar-overlay"
-        style={{ background: overlayBackground }}
+        style={{ backgroundImage: overlayBackground }}
       ></div>
     </div>
   );

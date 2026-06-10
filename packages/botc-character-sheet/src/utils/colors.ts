@@ -98,39 +98,45 @@ export function createGradient(colors: string[], angle: number = 20): string {
  * @param angle Gradient angle in degrees (default: 90 for vertical)
  */
 export function createOverlayBackground(
-  color: string[],
+  color: string | string[],
   angle: number = 0,
   type: "page" | "sidebar" | "footer",
 ): string {
-  let trueAngle: number;
-  if (
-    type === "sidebar" &&
-    Math.min(Math.abs(angle - 90), Math.abs(angle - 270)) < 45
-  ) {
-    trueAngle = angle + 90;
-  } else if (
-    type === "footer" &&
-    Math.min(Math.abs(angle - 90), Math.abs(angle - 270)) >= 45
-  ) {
-    trueAngle = angle + 90;
+  if (Array.isArray(color)) {
+    
+    let trueAngle: number;
+    if (
+      type === "sidebar" &&
+      Math.min(Math.abs(angle - 90), Math.abs(angle - 270)) < 45
+    ) {
+      trueAngle = angle + 90;
+    } else if (
+      type === "footer" &&
+      Math.min(Math.abs(angle - 90), Math.abs(angle - 270)) >= 45
+    ) {
+      trueAngle = angle + 90;
+    } else {
+      trueAngle = angle;
+    }
+
+    trueAngle += 180;
+
+    const colors = normalizeColors(color);
+
+    if (colors.length === 1) {
+      return colors[0];
+    }
+
+    const stops = colors
+      .map((c, index) => {
+        const percentage = (index / (colors.length - 1)) * 100;
+        return `${c} ${percentage}%`;
+      })
+      .join(", ");
+
+    return `linear-gradient(${trueAngle}deg, ${stops})`;
   } else {
-    trueAngle = angle;
+    return `url("${color}")`
   }
-
-  trueAngle += 180;
-
-  const colors = normalizeColors(color);
-
-  if (colors.length === 1) {
-    return colors[0];
-  }
-
-  const stops = colors
-    .map((c, index) => {
-      const percentage = (index / (colors.length - 1)) * 100;
-      return `${c} ${percentage}%`;
-    })
-    .join(", ");
-
-  return `linear-gradient(${trueAngle}deg, ${stops})`;
+  
 }

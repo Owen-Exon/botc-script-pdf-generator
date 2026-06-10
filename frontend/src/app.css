@@ -689,6 +689,10 @@ select.form-control-input:focus {
   /* min-height: 25px; */
 }
 
+.color-textarea.long {
+  min-height:100px
+}
+
 .color-textarea.error {
   border-color: rgb(133, 43, 43);
 }

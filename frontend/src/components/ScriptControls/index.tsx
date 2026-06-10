@@ -103,6 +103,7 @@ export function ScriptControls({
             <CollapsibleSection title="Color">
               <AppearanceOptions
                 options={options}
+                onOptionChange={onOptionChange}
                 onColorChange={onColorChange}
                 onColorAngleChange={onColorAngleChange}
                 onColorArrayChange={onColorArrayChange}
