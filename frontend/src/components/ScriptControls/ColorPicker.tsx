@@ -20,7 +20,7 @@ export function ColorPicker({
 }: ColorPickerProps) {
   const { color, colorAngle } = options;
 
-  const colRegex = /^#[0-9A-Fa-f]{6}(?:\s*,\s*#[0-9A-Fa-f]{6})*$/;
+  const colAndAngleRegex =/^#[0-9A-Fa-f]{6}(?:\s*,\s*#[0-9A-Fa-f]{6})*(?:\s*,\s*\d\d?\d?)?$/
   return (
     <div className="color-picker-section">
       <div className="color-picker-gradient">
@@ -98,7 +98,7 @@ export function ColorPicker({
           value={color.toString()}
           onChange={(e) => {
             const thisValue = (e.target as HTMLInputElement).value;
-            if (colRegex.test(thisValue)) {
+            if (colAndAngleRegex.test(thisValue)) {
               onColorChange(thisValue.split(","));
             }
           }}

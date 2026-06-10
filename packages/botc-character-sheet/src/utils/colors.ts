@@ -102,7 +102,6 @@ export function createOverlayBackground(
   angle: number = 0,
   type: "page" | "sidebar" | "footer",
 ): string {
-  console.log(angle);
   let trueAngle: number;
   if (
     type === "sidebar" &&

@@ -219,6 +219,11 @@ function EditMode() {
   };
 
   const handleColorChange = (newColor: string[]) => {
+    const colRegex = /#[0-9A-Fa-f]{6}/
+    if (!colRegex.test(newColor[newColor.length-1])) {
+      handleColorAngleChange(parseFloat(newColor.pop() || "0") )
+    }
+    
     updateOption("color", newColor);
 
     // Update the color in the script metadata
