@@ -52,7 +52,7 @@ export interface TitleStyle {
 export interface ScriptOptions {
   color: string[];
   colorImage: string;
-  useImageColor:boolean;
+  useImageColor: boolean;
   colorAngle: number;
   logo: string;
   showLogo: boolean;

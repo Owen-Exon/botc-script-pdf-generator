@@ -122,7 +122,7 @@ function EditMode() {
     if (!script) return;
 
     if (script.metadata?.options) {
-      const newOptions = script.metadata.options as ScriptOptions
+      const newOptions = script.metadata.options as ScriptOptions;
       setOptions((prev) => ({
         ...prev,
         ...newOptions,
@@ -183,11 +183,10 @@ function EditMode() {
   ) => {
     setOptions((prev) => ({ ...prev, [key]: value }));
   };
-  
+
   useEffect(() => {
-    updateScriptMetadata(options)
-  }, [options])
-  
+    updateScriptMetadata(options);
+  }, [options]);
 
   const handleLoadExample = () => {
     loadScript(exampleScript as Script);
@@ -204,11 +203,11 @@ function EditMode() {
   };
 
   const handleColorChange = (newColor: string[]) => {
-    const colRegex = /#[0-9A-Fa-f]{6}/
-    if (!colRegex.test(newColor[newColor.length-1])) {
-      handleColorAngleChange(parseFloat(newColor.pop() || "0") )
+    const colRegex = /#[0-9A-Fa-f]{6}/;
+    if (!colRegex.test(newColor[newColor.length - 1])) {
+      handleColorAngleChange(parseFloat(newColor.pop() || "0"));
     }
-    
+
     updateOption("color", newColor);
   };
 

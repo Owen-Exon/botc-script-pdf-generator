@@ -84,61 +84,57 @@ export function useScriptParsing() {
   };
 
   const updateScriptMetadata = (options: ScriptOptions) => {
-    if (!rawScript) return
+    if (!rawScript) return;
     const updatedScript = rawScript.map((element) => {
       if (typeof element === "object" && element !== null && "id" in element) {
         if (element.id === "_meta") {
-          const shortenedOptions = ((
-            {
-              color,
-              colorImage,
-              useImageColor,
-              colorAngle,
-              logo,
-              showLogo,
-              showJinxes,
-              showfabledAndLoric,
-              showSwirls,
-              includeMargins,
-              solidTitle,
-              appearance,
-              overleaf,
-              showNightSheet,
-              iconScale,
-              formatMinorWords,
-              displayNightOrder,
-              displayPlayerCounts,
-              inlineJinxIcons,
-              titleStyle,
-              dimensions,
-              teensy,
-            }
-          ) => (
-            {
-              color,
-              colorImage,
-              useImageColor,
-              colorAngle,
-              logo,
-              showLogo,
-              showJinxes,
-              showfabledAndLoric,
-              showSwirls,
-              includeMargins,
-              solidTitle,
-              appearance,
-              overleaf,
-              showNightSheet,
-              iconScale,
-              formatMinorWords,
-              displayNightOrder,
-              displayPlayerCounts,
-              inlineJinxIcons,
-              titleStyle,
-              dimensions,
-              teensy,
-            }
-          ))(options);
+          const shortenedOptions = (({
+            color,
+            colorImage,
+            useImageColor,
+            colorAngle,
+            logo,
+            showLogo,
+            showJinxes,
+            showfabledAndLoric,
+            showSwirls,
+            includeMargins,
+            solidTitle,
+            appearance,
+            overleaf,
+            showNightSheet,
+            iconScale,
+            formatMinorWords,
+            displayNightOrder,
+            displayPlayerCounts,
+            inlineJinxIcons,
+            titleStyle,
+            dimensions,
+            teensy,
+          }) => ({
+            color,
+            colorImage,
+            useImageColor,
+            colorAngle,
+            logo,
+            showLogo,
+            showJinxes,
+            showfabledAndLoric,
+            showSwirls,
+            includeMargins,
+            solidTitle,
+            appearance,
+            overleaf,
+            showNightSheet,
+            iconScale,
+            formatMinorWords,
+            displayNightOrder,
+            displayPlayerCounts,
+            inlineJinxIcons,
+            titleStyle,
+            dimensions,
+            teensy,
+          }))(options);
           return { ...element, options: shortenedOptions };
         }
       }

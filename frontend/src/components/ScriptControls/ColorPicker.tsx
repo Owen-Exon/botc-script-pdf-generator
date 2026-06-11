@@ -18,9 +18,10 @@ export function ColorPicker({
   onAddColor,
   onRemoveColor,
 }: ColorPickerProps) {
-  const { color, colorAngle} = options;
+  const { color, colorAngle } = options;
 
-  const colAndAngleRegex =/^#[0-9A-Fa-f]{6}(?:\s*,\s*#[0-9A-Fa-f]{6})*(?:\s*,\s*\d\d?\d?)?$/
+  const colAndAngleRegex =
+    /^#[0-9A-Fa-f]{6}(?:\s*,\s*#[0-9A-Fa-f]{6})*(?:\s*,\s*\d\d?\d?)?$/;
   return (
     <>
       <div className="color-picker-section">
@@ -31,7 +32,10 @@ export function ColorPicker({
                 type="color"
                 value={c}
                 onInput={(e) =>
-                  onColorArrayChange(index, (e.target as HTMLInputElement).value)
+                  onColorArrayChange(
+                    index,
+                    (e.target as HTMLInputElement).value,
+                  )
                 }
                 className="color-input"
               />

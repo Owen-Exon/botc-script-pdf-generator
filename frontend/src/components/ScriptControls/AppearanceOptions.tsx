@@ -39,9 +39,11 @@ export function AppearanceOptions({
             className={`color-textarea long`}
             value={options.colorImage.toString()}
             onChange={(e) => {
-                onOptionChange("colorImage", (e.target as HTMLInputElement).value)
-              }
-            }
+              onOptionChange(
+                "colorImage",
+                (e.target as HTMLInputElement).value,
+              );
+            }}
             rows={10}
             spellcheck={false}
           />

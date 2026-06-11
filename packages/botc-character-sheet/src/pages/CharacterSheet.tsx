@@ -78,7 +78,7 @@ export function CharacterSheet({
   ].filter((section) => section.chars.length > 0);
 
   const colors = normalizeColors(color);
-  const gradient = createGradient(colors , 20);
+  const gradient = createGradient(colors, 20);
 
   const appearanceClass =
     appearance !== "normal" ? `appearance-${appearance}` : "";
@@ -240,7 +240,7 @@ function Sidebar({
   options: ScriptOptions;
   colorAngle: number;
 }) {
-  const { useImageColor , colorImage , color} = options;
+  const { useImageColor, colorImage, color } = options;
   const overlayBackground = createOverlayBackground(
     useImageColor ? colorImage : color,
     colorAngle,

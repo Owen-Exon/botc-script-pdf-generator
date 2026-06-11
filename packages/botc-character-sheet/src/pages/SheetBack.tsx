@@ -26,7 +26,7 @@ export const SheetBack = ({
     displayPlayerCounts,
     dimensions,
     useImageColor,
-    colorImage
+    colorImage,
   } = options;
   const renderTitle = () => {
     const parts = title.split("&");
@@ -41,7 +41,7 @@ export const SheetBack = ({
   const overlayBackground = createOverlayBackground(
     useImageColor ? colorImage : color,
     colorAngle,
-    "page"
+    "page",
   );
 
   return (

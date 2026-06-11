@@ -103,7 +103,6 @@ export function createOverlayBackground(
   type: "page" | "sidebar" | "footer",
 ): string {
   if (Array.isArray(color)) {
-    
     let trueAngle: number;
     if (
       type === "sidebar" &&
@@ -136,7 +135,6 @@ export function createOverlayBackground(
 
     return `linear-gradient(${trueAngle}deg, ${stops})`;
   } else {
-    return `url("${color}")`
+    return `url("${color}")`;
   }
-  
 }

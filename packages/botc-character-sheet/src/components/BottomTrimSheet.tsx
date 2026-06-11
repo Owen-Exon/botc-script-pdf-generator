@@ -17,7 +17,14 @@ export const BottomTrimSheet = ({
   options,
   children,
 }: BottomTrimSheetProps) => {
-  const { color, colorAngle, includeMargins, dimensions,useImageColor,colorImage } = options;
+  const {
+    color,
+    colorAngle,
+    includeMargins,
+    dimensions,
+    useImageColor,
+    colorImage,
+  } = options;
   const colors = normalizeColors(color);
   const gradient = createGradient(colors, 20);
   const overlayBackground = createOverlayBackground(
