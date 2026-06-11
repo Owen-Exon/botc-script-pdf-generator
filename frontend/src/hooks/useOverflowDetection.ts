@@ -92,5 +92,5 @@ export function useOverflowDetection({
     }, 100); // 100ms debounce to allow rendering to complete
 
     return () => clearTimeout(timeoutId);
-  }, [options.appearance, script, setOptions, options.dimensions]);
+  }, [options, script, setOptions]);
 }

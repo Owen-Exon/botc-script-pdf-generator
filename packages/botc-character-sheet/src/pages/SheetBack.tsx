@@ -25,7 +25,8 @@ export const SheetBack = ({
     displayNightOrder,
     displayPlayerCounts,
     dimensions,
-    useImageColor,colorImage
+    useImageColor,
+    colorImage
   } = options;
   const renderTitle = () => {
     const parts = title.split("&");

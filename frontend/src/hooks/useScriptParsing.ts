@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "preact/hooks";
 import { parseScript } from "../utils/scriptParser";
 import { sortScript } from "botc-script-checker";
 import type { Script } from "botc-script-checker";
-import { NightOrders, ParsedScript } from "botc-character-sheet";
+import { NightOrders, ParsedScript, ScriptOptions } from "botc-character-sheet";
 import { calculateNightOrders } from "../utils/nightOrders";
 import { downloadBlob } from "../utils/downloadFile";
 import JSON5 from "json5";
@@ -83,7 +83,68 @@ export function useScriptParsing() {
     }
   };
 
-  const updateScriptMetadata = (updatedScript: Script) => {
+  const updateScriptMetadata = (options: ScriptOptions) => {
+    if (!rawScript) return
+    const updatedScript = rawScript.map((element) => {
+      if (typeof element === "object" && element !== null && "id" in element) {
+        if (element.id === "_meta") {
+          const shortenedOptions = ((
+            {
+              color,
+              colorImage,
+              useImageColor,
+              colorAngle,
+              logo,
+              showLogo,
+              showJinxes,
+              showfabledAndLoric,
+              showSwirls,
+              includeMargins,
+              solidTitle,
+              appearance,
+              overleaf,
+              showNightSheet,
+              iconScale,
+              formatMinorWords,
+              displayNightOrder,
+              displayPlayerCounts,
+              inlineJinxIcons,
+              titleStyle,
+              dimensions,
+              teensy,
+            }
+          ) => (
+            {
+              color,
+              colorImage,
+              useImageColor,
+              colorAngle,
+              logo,
+              showLogo,
+              showJinxes,
+              showfabledAndLoric,
+              showSwirls,
+              includeMargins,
+              solidTitle,
+              appearance,
+              overleaf,
+              showNightSheet,
+              iconScale,
+              formatMinorWords,
+              displayNightOrder,
+              displayPlayerCounts,
+              inlineJinxIcons,
+              titleStyle,
+              dimensions,
+              teensy,
+            }
+          ))(options);
+          return { ...element, options: shortenedOptions };
+        }
+      }
+      return element;
+    });
+
     setRawScript(updatedScript);
     setScriptText(JSON.stringify(updatedScript, null, 2));
   };

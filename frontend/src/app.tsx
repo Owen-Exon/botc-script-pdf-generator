@@ -7,7 +7,6 @@ import exampleTeensyville from "./data/example-teensy.json";
 import {
   useScriptLoader,
   getInitialOptionsFromUrl,
-  hasUrlParam,
 } from "./hooks/useScriptLoader";
 import { usePdfGeneration } from "./hooks/usePdfGeneration";
 import { useImageGeneration } from "./hooks/useImageGeneration";
@@ -122,31 +121,12 @@ function EditMode() {
   useEffect(() => {
     if (!script) return;
 
-    // If URL param specified color, update the script metadata with it
-    // Otherwise, load color from script metadata
-    if (hasUrlParam("color")) {
-      handleColorChange(options.color);
-    } else if (script.metadata?.color) {
-      const color = script.metadata.color;
-      if (Array.isArray(color)) {
-        updateOption("color", color);
-      }
-    }
-
-    if (hasUrlParam("colorAngle")) {
-      handleColorAngleChange(options.colorAngle);
-    } else if (script.metadata?.colorAngle) {
-      const colorAngle = script.metadata.colorAngle;
-      updateOption("colorAngle", colorAngle as number);
-    }
-
-    // Same for logo
-    if (hasUrlParam("logo")) {
-      handleLogoChange(options.logo);
-    } else if (script.metadata?.logo) {
-      updateOption("logo", script.metadata.logo);
-    } else {
-      updateOption("logo", "");
+    if (script.metadata?.options) {
+      const newOptions = script.metadata.options as ScriptOptions
+      setOptions((prev) => ({
+        ...prev,
+        ...newOptions,
+      }));
     }
 
     // Icon URL template — only active when explicitly set in script metadata
@@ -203,6 +183,11 @@ function EditMode() {
   ) => {
     setOptions((prev) => ({ ...prev, [key]: value }));
   };
+  
+  useEffect(() => {
+    updateScriptMetadata(options)
+  }, [options])
+  
 
   const handleLoadExample = () => {
     loadScript(exampleScript as Script);
@@ -225,20 +210,6 @@ function EditMode() {
     }
     
     updateOption("color", newColor);
-
-    // Update the color in the script metadata
-    if (!rawScript) return;
-
-    const updatedScript = rawScript.map((element) => {
-      if (typeof element === "object" && element !== null && "id" in element) {
-        if (element.id === "_meta") {
-          return { ...element, color: newColor };
-        }
-      }
-      return element;
-    });
-
-    updateScriptMetadata(updatedScript);
   };
 
   const handleColorAngleChange = (newAngle: number) => {
@@ -248,20 +219,6 @@ function EditMode() {
     const trueAngle = standardAngle === 360 ? 0 : standardAngle;
 
     updateOption("colorAngle", trueAngle);
-
-    // Update the angle in the script metadata
-    if (!rawScript) return;
-
-    const updatedScript = rawScript.map((element) => {
-      if (typeof element === "object" && element !== null && "id" in element) {
-        if (element.id === "_meta") {
-          return { ...element, colorAngle: trueAngle };
-        }
-      }
-      return element;
-    });
-
-    updateScriptMetadata(updatedScript);
   };
 
   const handleColorArrayChange = (index: number, newColor: string) => {
@@ -289,19 +246,6 @@ function EditMode() {
 
   const handleLogoChange = (newLogo: string) => {
     updateOption("logo", newLogo);
-
-    if (!rawScript) return;
-
-    const updatedScript = rawScript.map((element) => {
-      if (typeof element === "object" && element !== null && "id" in element) {
-        if (element.id === "_meta") {
-          return { ...element, logo: newLogo || undefined };
-        }
-      }
-      return element;
-    });
-
-    updateScriptMetadata(updatedScript);
   };
 
   const handleScriptChange = (newText: string) => {
