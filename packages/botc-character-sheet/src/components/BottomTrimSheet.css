@@ -20,9 +20,9 @@
 
 .info-ccc-logo {
   position: absolute;
-  left: 3mm;
-  margin-left: 3mm;
-  top: -50%;
+  right: 0mm;
+  margin-right: 3mm;
+  top: -60%;
   height: 9mm;
 }
 

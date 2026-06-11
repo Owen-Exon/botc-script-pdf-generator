@@ -171,10 +171,10 @@ export function CharacterSheet({
             src="/images/ccc-parchment.png"
             alt="Community Created Content"
           />
-          <div className="author-credit">
+          {/* <div className="author-credit">
             <p>© Steven Medway bloodontheclocktower.com</p>
             <p>Script template by John Forster ravenswoodstudio.xyz</p>
-          </div>
+          </div> */}
         </div>
       </div>{" "}
     </PrintablePage>

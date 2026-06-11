@@ -61,10 +61,10 @@ export const BottomTrimSheet = ({
             src="/images/ccc-parchment.png"
             alt="Community Created Content"
           />
-          <div className="info-author-credit">
+          {/* <div className="info-author-credit">
             <p>© Steven Medway bloodontheclocktower.com</p>
             <p>Script template by John Forster ravenswoodstudio.xyz</p>
-          </div>
+          </div> */}
           <div className="info-footer-background"></div>
           <div
             className="info-footer-overlay"
