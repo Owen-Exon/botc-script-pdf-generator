@@ -33,9 +33,45 @@ export function AppearanceOptions({
         onChange={(value) => onOptionChange("useImageColor", value)}
       />
 
+      {options.useImageColor && (
+        <>
+          <textarea
+            className={`color-textarea long`}
+            value={options.colorImage.toString()}
+            onChange={(e) => {
+                onOptionChange("colorImage", (e.target as HTMLInputElement).value)
+              }
+            }
+            rows={10}
+            spellcheck={false}
+          />
+          <div className="color-presets-container">
+            {Object.keys(options.presetImages).map((id) => (
+              <button
+                className="secondary-button"
+                onClick={(e) => {
+                  navigator.clipboard.writeText(`${options.presetImages[id]}`);
+                  const element = e.target as HTMLElement;
+                  element.innerHTML = "Coppied!";
+                  setTimeout(
+                    (element: HTMLElement, id: string) => {
+                      element.innerHTML = id;
+                    },
+                    1500,
+                    element,
+                    id,
+                  );
+                }}
+              >
+                {id}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+
       <ColorPicker
         options={options}
-        onOptionChange={onOptionChange}
         onColorChange={onColorChange}
         onColorAngleChange={onColorAngleChange}
         onColorArrayChange={onColorArrayChange}
@@ -43,13 +79,12 @@ export function AppearanceOptions({
         onRemoveColor={onRemoveColor}
       />
 
-      {options.useImageColor ? (
-        <div className="color-presets-container">
-        {Object.keys(options.presetImages).map((id) => (
+      <div className="color-presets-container">
+        {Object.keys(options.presetColors).map((id) => (
           <button
             className="secondary-button"
             onClick={(e) => {
-              navigator.clipboard.writeText(`${options.presetImages[id]}`);
+              navigator.clipboard.writeText(`${options.presetColors[id]}`);
               const element = e.target as HTMLElement;
               element.innerHTML = "Coppied!";
               setTimeout(
@@ -66,32 +101,6 @@ export function AppearanceOptions({
           </button>
         ))}
       </div>
-      ) : (
-        <div className="color-presets-container">
-          {Object.keys(options.presetColors).map((id) => (
-            <button
-              className="secondary-button"
-              onClick={(e) => {
-                navigator.clipboard.writeText(`${options.presetColors[id]}`);
-                const element = e.target as HTMLElement;
-                element.innerHTML = "Coppied!";
-                setTimeout(
-                  (element: HTMLElement, id: string) => {
-                    element.innerHTML = id;
-                  },
-                  1500,
-                  element,
-                  id,
-                );
-              }}
-            >
-              {id}
-            </button>
-          ))}
-        </div>
-      )}
-
-      
 
       {/* <div className="form-control">
         <label className="form-control-label">

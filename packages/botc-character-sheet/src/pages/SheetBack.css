@@ -27,6 +27,7 @@
   height: 100%;
   mix-blend-mode: multiply;
   pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .sheet-backing h1 {

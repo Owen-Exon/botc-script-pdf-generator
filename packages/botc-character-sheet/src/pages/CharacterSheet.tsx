@@ -49,7 +49,6 @@ export function CharacterSheet({
     inlineJinxIcons,
     iconUrlTemplate,
     dimensions,
-    useImageColor
   } = options;
   const sections = [
     {
@@ -79,7 +78,7 @@ export function CharacterSheet({
   ].filter((section) => section.chars.length > 0);
 
   const colors = normalizeColors(color);
-  const gradient = createGradient(useImageColor ? ["#000000"] : colors , 20);
+  const gradient = createGradient(colors , 20);
 
   const appearanceClass =
     appearance !== "normal" ? `appearance-${appearance}` : "";
