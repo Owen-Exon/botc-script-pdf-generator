@@ -132,12 +132,6 @@ export function CharacterSheetOptions({
         label="Use Old Jinxes"
         checked={options.useOldJinxes}
         onChange={(value) => onOptionChange("useOldJinxes", value)}
-      />
-
-      <Toggle
-        label="Solid Title"
-        checked={options.solidTitle}
-        onChange={(value) => onOptionChange("solidTitle", value)}
       /> */}
     </>
   );

@@ -17,8 +17,6 @@ interface ActionButtonsProps {
 export function ActionButtons({
   error,
   onGeneratePDF,
-  shareUrl,
-  shareError,
 }: ActionButtonsProps) {
   return (
     <div className="action-buttons-section">
@@ -29,17 +27,6 @@ export function ActionButtons({
       </div>
 
       {error && <div className="error-message">{error}</div>}
-
-      {shareUrl && (
-        <div className="success-message">
-          Link copied to clipboard:{" "}
-          <a href={shareUrl} target="_blank" rel="noopener noreferrer">
-            {shareUrl}
-          </a>
-        </div>
-      )}
-
-      {shareError && <div className="error-message">{shareError}</div>}
     </div>
   );
 }

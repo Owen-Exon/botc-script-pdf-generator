@@ -72,6 +72,12 @@ export function AppearanceOptions({
         </>
       )}
 
+      <Toggle
+        label="Solid Title"
+        checked={options.solidTitle}
+        onChange={(value) => onOptionChange("solidTitle", value)}
+      />
+
       <ColorPicker
         options={options}
         onColorChange={onColorChange}
@@ -163,6 +169,7 @@ export function AppearanceOptions({
           </p>
         </div>
       )} */}
+      
       {/* <Toggle
         label="Include Night Sheet"
         checked={options.showNightSheet}
