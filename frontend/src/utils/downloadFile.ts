@@ -1,13 +1,15 @@
 /**
  * Downloads a blob as a file by creating a temporary link and clicking it.
  */
-export function downloadBlob(blob: Blob, filename: string): void {
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+export async function downloadBlob(
+  blob: Blob,
+  filename: string
+): Promise<void> {
+  const handle = await (window as any).showSaveFilePicker({
+    suggestedName: filename,
+  });
+
+  const writable = await handle.createWritable();
+  await writable.write(blob);
+  await writable.close();
 }

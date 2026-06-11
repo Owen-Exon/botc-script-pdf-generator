@@ -101,7 +101,6 @@ export function useScriptParsing() {
             includeMargins,
             solidTitle,
             appearance,
-            overleaf,
             showNightSheet,
             iconScale,
             formatMinorWords,
@@ -109,7 +108,6 @@ export function useScriptParsing() {
             displayPlayerCounts,
             inlineJinxIcons,
             titleStyle,
-            dimensions,
             teensy,
           }) => ({
             color,
@@ -124,7 +122,6 @@ export function useScriptParsing() {
             includeMargins,
             solidTitle,
             appearance,
-            overleaf,
             showNightSheet,
             iconScale,
             formatMinorWords,
@@ -132,7 +129,6 @@ export function useScriptParsing() {
             displayPlayerCounts,
             inlineJinxIcons,
             titleStyle,
-            dimensions,
             teensy,
           }))(options);
           return { ...element, options: shortenedOptions };
