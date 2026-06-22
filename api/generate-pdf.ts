@@ -70,7 +70,7 @@ export default {
       browser.close();
 
       // Set response headers
-      const pdfFilename = filename || "script.pdf";
+      const pdfFilename = filename.replace(/\s+/g, "-") || "script.pdf";
       const compressed = gzipSync(pdf);
 
       return new Response(compressed, {

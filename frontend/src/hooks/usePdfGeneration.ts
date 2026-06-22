@@ -66,6 +66,7 @@ export function usePdfGeneration() {
   };
 
   const downloadPDF = (scriptName?: string) => {
+    scriptName = scriptName?.replace(/\s+/g, "-")
     if (!pdfBlob) return;
     downloadBlob(pdfBlob, `${scriptName || "script"}.pdf`);
   };

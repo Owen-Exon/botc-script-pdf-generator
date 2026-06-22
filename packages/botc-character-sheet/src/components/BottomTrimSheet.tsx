@@ -68,7 +68,7 @@ export const BottomTrimSheet = ({
           <div className="info-footer-background"></div>
           <div
             className="info-footer-overlay"
-            style={{ backgroundImage: overlayBackground }}
+            style={{ background: overlayBackground }}
           ></div>
         </div>
       </div>

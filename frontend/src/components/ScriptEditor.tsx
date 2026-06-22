@@ -16,6 +16,7 @@ export function ScriptEditor({
         <button onClick={onSave} className="update-button">
           Save
         </button>
+        <button style={{float:"right"}} onClick={() => navigator.clipboard.writeText(" ")} className="update-button">{'&nbsp;'}</button>
       </div>
       <textarea
         className="script-editor-textarea"

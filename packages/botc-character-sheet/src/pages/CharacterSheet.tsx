@@ -251,7 +251,7 @@ function Sidebar({
       <div className="sidebar-background"></div>
       <div
         className="sidebar-overlay"
-        style={{ backgroundImage: overlayBackground }}
+        style={{ background: overlayBackground }}
       ></div>
     </div>
   );

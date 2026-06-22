@@ -67,7 +67,7 @@ export const SheetBack = ({
 
         <div
           className="sheet-back-overlay"
-          style={{ backgroundImage: overlayBackground }}
+          style={{ background: overlayBackground }}
         ></div>
 
         <div className="back-info-container">
