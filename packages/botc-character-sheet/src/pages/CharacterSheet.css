@@ -32,8 +32,8 @@
 }
 
 .sidebar-overlay {
-  background-position: center;
-  background-size: cover;
+  background-position: center !important;
+  background-size: cover !important;
   position: absolute;
   top: 0;
   left: 0;

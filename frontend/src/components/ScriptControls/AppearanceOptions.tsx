@@ -41,7 +41,7 @@ export function AppearanceOptions({
             onChange={(e) => {
               onOptionChange(
                 "colorImage",
-                (e.target as HTMLInputElement).value,
+                (e.target as HTMLInputElement).value.toString(),
               );
             }}
             rows={10}
